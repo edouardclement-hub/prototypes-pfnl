@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="fr">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Radar PFNL</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Archivo:ital@1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FCFCFA;
+    --panel: #FFFFFF;
+    --ink: #16211A;
+    --ink-2: #4E5A51;
+    --ink-3: #8B958D;
+    --line: #E3E6E0;
+    --green: #1F7A4D;
+    --green-deep: #135A37;
+    --green-wash: #E4F2EA;
+    --urgent: #B4560A;
+    --urgent-wash: #FBEDDD;
+    --sans: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  a { color: var(--green-deep); font-weight: 600; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .proto-bar { background: var(--ink); color: #C9CFC8; font-size: 11px; font-weight: 600; text-align: center; padding: 6px 14px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 30px 22px 60px; }
+
+  /* Header */
+  .head { display: flex; align-items: center; gap: 14px; padding-bottom: 18px; border-bottom: 3px solid var(--ink); flex-wrap: wrap; }
+  .beacon { width: 44px; height: 44px; border-radius: 50%; background: var(--green); position: relative; flex-shrink: 0; }
+  .beacon::after { content: ''; position: absolute; inset: 13px; border-radius: 50%; background: #fff; }
+  .beacon::before { content: ''; position: absolute; inset: 6px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.55); }
+  .head h1 { font-size: 30px; font-weight: 800; letter-spacing: -0.02em; }
+  .head h1 span { color: var(--green); }
+  .head .meta { margin-left: auto; text-align: right; }
+  .head .meta .n { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-2); }
+  .head .meta .t { font-size: 12px; color: var(--ink-3); }
+
+  /* À ne pas manquer */
+  .anpm { margin-top: 24px; }
+  .anpm .k { font-size: 12px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--urgent); margin-bottom: 10px; }
+  .dl { display: flex; gap: 10px; flex-wrap: wrap; }
+  .dl-card { flex: 1; min-width: 180px; background: var(--panel); border: 1px solid var(--line); border-top: 4px solid var(--urgent); border-radius: 8px; padding: 12px 14px; }
+  .dl-card .when { font-size: 12px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--urgent); font-variant-numeric: tabular-nums; }
+  .dl-card .what { font-size: 13.5px; font-weight: 600; margin-top: 4px; line-height: 1.4; }
+
+  /* Sections */
+  .sec { margin-top: 34px; }
+  .sec-head { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+  .sec-head .b { width: 12px; height: 12px; border-radius: 3px; background: var(--green); flex-shrink: 0; }
+  .sec-head h2 { font-size: 18px; font-weight: 800; letter-spacing: -0.01em; }
+  .sec-head .cnt { margin-left: auto; font-size: 12px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+
+  /* Financement table */
+  .fin-scroll { overflow-x: auto; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; }
+  .fin { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  .fin th { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); text-align: left; padding: 10px 14px; border-bottom: 2px solid var(--line); }
+  .fin td { padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .fin tr:last-child td { border-bottom: none; }
+  .fin td:first-child { font-weight: 700; }
+  .tag-new { display: inline-block; font-size: 10px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; background: var(--green-wash); color: var(--green-deep); padding: 2px 7px; border-radius: 8px; margin-left: 6px; vertical-align: 2px; }
+  .ech { font-weight: 700; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .ech.soon { color: var(--urgent); }
+
+  /* Timeline calendrier */
+  .tl { list-style: none; border-left: 2px solid var(--line); margin-left: 6px; padding-left: 20px; }
+  .tl li { position: relative; padding: 4px 0 16px; }
+  .tl li::before { content: ''; position: absolute; left: -25.5px; top: 10px; width: 9px; height: 9px; border-radius: 50%; background: var(--green); border: 2px solid var(--bg); }
+  .tl .d { font-size: 12px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--green-deep); font-variant-numeric: tabular-nums; }
+  .tl .e { font-size: 14.5px; font-weight: 600; }
+  .tl .w { font-size: 12.5px; color: var(--ink-3); }
+
+  /* Actualités one-liners */
+  .flash { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 6px 16px; }
+  .flash-item { display: flex; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+  .flash-item:last-child { border-bottom: none; }
+  .flash .reg { font-size: 11px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--green-deep); min-width: 118px; flex-shrink: 0; }
+  .flash .txt { font-size: 14px; }
+  .flash .txt a { font-size: 13px; white-space: nowrap; }
+
+  .appel-list li { margin: 0 0 9px 18px; font-size: 14.5px; }
+
+  /* Portail */
+  .portail { border: 2px dashed var(--green); background: var(--green-wash); border-radius: 12px; padding: 24px 26px; margin-top: 40px; display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
+  .portail .txt { flex: 1; min-width: 240px; }
+  .portail h2 { font-size: 18px; font-weight: 800; color: var(--green-deep); }
+  .portail p { font-size: 13.5px; color: var(--ink-2); margin-top: 5px; }
+  .portail .cta { background: var(--green-deep); color: #fff; font-weight: 700; font-size: 14px; padding: 11px 22px; border-radius: 7px; white-space: nowrap; }
+  .portail .cta:hover { text-decoration: none; filter: brightness(1.1); }
+
+  .foot { margin-top: 26px; padding-top: 14px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 12.5px; color: var(--ink-3); align-items: center; }
+  .foot .links { display: flex; gap: 16px; align-items: center; }
+  .btn-pdf { font-family: var(--sans); font-size: 12.5px; font-weight: 700; color: var(--ink-2); background: none; border: 1px solid var(--line); border-radius: 6px; padding: 6px 13px; cursor: pointer; }
+
+  @media print {
+    .proto-bar, .portail, .btn-pdf, .foot .links { display: none; }
+    body { background: #fff; font-size: 12px; }
+    .wrap { padding: 0; max-width: none; }
+  }
+  @media (max-width: 560px) { .head .meta { margin-left: 0; text-align: left; } .flash .reg { min-width: 90px; } }
+</style>
+
+<div class="proto-bar">Prototype C / 3 — « L'orienté action » · contenu de démonstration</div>
+<div class="wrap">
+
+  <header class="head">
+    <div class="beacon" aria-hidden="true"></div>
+    <h1>Radar <span>PFNL</span></h1>
+    <div class="meta">
+      <div class="n">Septembre 2026 · Nº 01</div>
+      <div class="t">Occasions, échéances et nouvelles du secteur</div>
+    </div>
+  </header>
+
+  <div class="anpm">
+    <div class="k">⚠ À ne pas manquer ce mois-ci</div>
+    <div class="dl">
+      <div class="dl-card"><div class="when">5 octobre</div><div class="what">Échéance — Soutien au transfert technologique</div></div>
+      <div class="dl-card"><div class="when">31 octobre</div><div class="what">Date limite du sondage sectoriel PFNL</div></div>
+      <div class="dl-card"><div class="when">18–20 sept.</div><div class="what">Festival des champignons forestiers, Kamouraska</div></div>
+    </div>
+  </div>
+
+  <section class="sec">
+    <div class="sec-head"><span class="b" style="background:var(--urgent)"></span><h2>Financement ouvert</h2><span class="cnt">3 programmes</span></div>
+    <div class="fin-scroll">
+      <table class="fin">
+        <tr><th>Programme</th><th>Clientèle admissible</th><th>Échéance</th></tr>
+        <tr><td>Appel à projets PFNL — MRC des Laurentides<span class="tag-new">Nouveau</span></td><td>Entreprises, OBNL, coopératives</td><td class="ech">Avril 2027</td></tr>
+        <tr><td>Soutien au transfert technologique</td><td>Établissements de recherche, regroupements de producteurs</td><td class="ech soon">5 oct. 2026</td></tr>
+        <tr><td>Appui aux initiatives bioalimentaires régionales</td><td>Entreprises, OBNL, cégeps, CCTT, universités, MRC</td><td class="ech">31 mars 2029</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><span class="b"></span><h2>Calendrier de l'automne</h2></div>
+    <ul class="tl">
+      <li><div class="d">18–20 septembre</div><div class="e">Festival des champignons forestiers du Kamouraska</div><div class="w">Kamouraska — dégustations, sorties guidées, conférences</div></li>
+      <li><div class="d">9–12 octobre</div><div class="e">Délices d'automne</div><div class="w">Trois-Rivières — vitrine des produits régionaux</div></li>
+      <li><div class="d">31 octobre</div><div class="e">Date limite — sondage sectoriel PFNL</div><div class="w">15 minutes pour dresser le portrait de la filière</div></li>
+      <li><div class="d">25–26 novembre</div><div class="e">3ᵉ Sommet sur le mycotourisme</div><div class="w">Mont-Laurier — réseautage et conférences</div></li>
+    </ul>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><span class="b"></span><h2>En bref, d'une région à l'autre</h2><span class="cnt">7 nouvelles</span></div>
+    <div class="flash">
+      <div class="flash-item"><span class="reg">Beauce</span><span class="txt">Formations d'initiation à la cueillette : plantes médicinales (12 sept.), champignons (19 et 26 sept.). <a href="#" onclick="return false">source</a></span></div>
+      <div class="flash-item"><span class="reg">Bas-St-Laurent</span><span class="txt">Récolte record de camerises — une ligne de transformation à l'étude à la coopérative régionale. <a href="#" onclick="return false">source</a></span></div>
+      <div class="flash-item"><span class="reg">Lanaudière</span><span class="txt">Une érablière diversifie sa production vers les champignons forestiers et le thé du Labrador. <a href="#" onclick="return false">source</a></span></div>
+      <div class="flash-item"><span class="reg">Saguenay</span><span class="txt">Une nouvelle entreprise de transformation du chaga démarre — signalée par le réseau. <a href="#" onclick="return false">source</a></span></div>
+      <div class="flash-item"><span class="reg">Côte-Nord</span><span class="txt">La chicoutai à l'honneur au marché public de Sept-Îles ; ateliers de transformation annoncés. <a href="#" onclick="return false">source</a></span></div>
+      <div class="flash-item"><span class="reg">Gaspésie</span><span class="txt">Recherche — le thé du Labrador cultivé en sous-bois aménagé donne des rendements prometteurs (Cégep GÎM). <a href="#" onclick="return false">source</a></span></div>
+      <div class="flash-item"><span class="reg">Bas-St-Laurent</span><span class="txt">Recherche — le CDBQ met au point un séchage à basse température qui préserve les actifs des champignons. <a href="#" onclick="return false">source</a></span></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><span class="b"></span><h2>Le secteur cherche</h2></div>
+    <ul class="appel-list">
+      <li>Partenaires régionaux pour un projet de fiches nutritionnelles des PFNL. <a href="#" onclick="return false">Participer</a></li>
+      <li>Représentants sectoriels pour trois groupes de travail : dénomination, salubrité, formation. <a href="#" onclick="return false">S'informer</a></li>
+      <li>Répondants au sondage sectoriel 2026 — avant le 31 octobre. <a href="#" onclick="return false">Répondre</a></li>
+    </ul>
+  </section>
+
+  <div class="portail">
+    <div class="txt">
+      <h2>Votre radar, c'est aussi vous.</h2>
+      <p>Une nouvelle, une formation, un appel à projets vu dans votre région ? Soumettez le lien — il pourra apparaître dans le prochain numéro.</p>
+    </div>
+    <a class="cta" href="#" onclick="return false">Soumettre une nouvelle</a>
+  </div>
+
+  <div class="foot">
+    <span>Radar PFNL · produit par Groupe AGÉCO, agent de concertation du secteur</span>
+    <div class="links">
+      <a href="#" onclick="return false">Numéros précédents</a>
+      <button class="btn-pdf" onclick="window.print()">Version PDF</button>
+    </div>
+  </div>
+</div>
+
+</html>

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="fr">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Portail Sous-bois</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FAF7EF; --card: #FFFFFF; --boreal: #24402E; --boreal-deep: #182C1F;
+    --moss: #5B7A5E; --chant: #C08327; --chant-wash: #F6ECD8;
+    --ink: #22291F; --ink-2: #5C6356; --ink-3: #939A8D; --rule: #E4DFD2;
+    --serif: 'Newsreader', Georgia, serif; --sans: 'Karla', 'Helvetica Neue', Arial, sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--cream); color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  a { color: var(--boreal); font-weight: 700; text-decoration: none; }
+  a:hover { color: var(--chant); }
+  .proto-bar { background: var(--boreal-deep); color: #C8D4C5; font-size: 11px; text-align: center; padding: 6px 14px; letter-spacing: 0.06em; font-weight: 600; text-transform: uppercase; }
+
+  /* Nav */
+  .nav { background: var(--boreal); color: #F2EFE4; position: sticky; top: 0; z-index: 20; }
+  .nav-in { max-width: 860px; margin: 0 auto; padding: 12px 22px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .brand { font-family: var(--serif); font-style: italic; font-weight: 500; font-size: 24px; color: #F2EFE4; }
+  .brand:hover { color: var(--chant); }
+  .brand small { font-family: var(--sans); font-style: normal; font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #A9BFA6; display: block; line-height: 1; margin-top: 2px; }
+  .nav-tabs { display: flex; gap: 4px; margin-left: auto; }
+  .nav-tab { font-size: 13.5px; font-weight: 700; color: #C9D5C3; padding: 7px 14px; border-radius: 6px; background: none; border: none; cursor: pointer; font-family: var(--sans); }
+  .nav-tab:hover { color: #fff; background: rgba(255,255,255,0.08); }
+  .nav-tab.active { background: rgba(255,255,255,0.14); color: #fff; }
+  .nav-tab.cta { background: var(--chant); color: #241A08; }
+
+  .wrap { max-width: 680px; margin: 0 auto; padding: 30px 22px 60px; }
+  .view { display: none; } .view.active { display: block; }
+
+  /* Sélecteur d'édition */
+  .ed-bar { display: flex; align-items: center; gap: 12px; margin-bottom: 26px; flex-wrap: wrap; }
+  .ed-bar label { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--moss); }
+  .ed-bar select { font-family: var(--sans); font-size: 14px; font-weight: 700; padding: 8px 12px; border: 1px solid var(--rule); border-radius: 7px; background: var(--card); color: var(--ink); cursor: pointer; }
+  .ed-bar .pdf { margin-left: auto; font-size: 12.5px; font-weight: 700; color: var(--ink-2); background: none; border: 1px solid var(--rule); border-radius: 6px; padding: 7px 14px; cursor: pointer; font-family: var(--sans); }
+
+  /* Contenu d'édition (repris du proto B, condensé) */
+  .ed-head { text-align: center; margin-bottom: 30px; }
+  .ed-head .num { font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--chant); }
+  .ed-head h1 { font-family: var(--serif); font-size: 34px; font-weight: 600; margin-top: 6px; text-wrap: balance; }
+  .edito { font-family: var(--serif); font-size: 18px; line-height: 1.6; }
+  .edito-sig { font-family: var(--serif); font-style: italic; color: var(--ink-2); margin-top: 10px; font-size: 14.5px; }
+  .rubrique { margin-top: 38px; }
+  .rub-head { display: flex; align-items: baseline; gap: 10px; border-bottom: 2px solid var(--boreal); padding-bottom: 6px; margin-bottom: 16px; }
+  .rub-head h2 { font-family: var(--serif); font-size: 22px; font-weight: 600; }
+  .rub-head .k { margin-left: auto; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--moss); }
+  .story { margin-bottom: 18px; padding-bottom: 16px; border-bottom: 1px solid var(--rule); }
+  .story:last-child { border-bottom: none; margin-bottom: 0; }
+  .story .region { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--chant); }
+  .story h3 { font-family: var(--serif); font-size: 19px; font-weight: 600; line-height: 1.35; margin: 3px 0 5px; text-wrap: balance; }
+  .story p { font-size: 14px; color: var(--ink-2); }
+  .story .lire { font-size: 13px; display: inline-block; margin-top: 5px; }
+  .fin-card { background: var(--card); border: 1px solid var(--rule); border-radius: 9px; padding: 14px 18px; margin-bottom: 10px; display: flex; justify-content: space-between; gap: 14px; align-items: baseline; flex-wrap: wrap; }
+  .fin-card .nom { font-weight: 700; font-size: 14.5px; }
+  .fin-card .cli { font-size: 12.5px; color: var(--ink-2); margin-top: 2px; }
+  .fin-card .ech { font-size: 11.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--chant); white-space: nowrap; }
+  .cal { list-style: none; }
+  .cal li { display: flex; gap: 14px; padding: 8px 0; border-bottom: 1px solid var(--rule); align-items: baseline; }
+  .cal li:last-child { border-bottom: none; }
+  .cal .d { font-weight: 700; font-size: 12.5px; color: var(--boreal); min-width: 96px; flex-shrink: 0; }
+  .cal .e small { color: var(--ink-3); }
+  .appels li { margin: 0 0 8px 18px; font-size: 14px; }
+
+  /* Explorer */
+  .exp-head h1 { font-family: var(--serif); font-size: 30px; font-weight: 600; }
+  .exp-head p { font-size: 14px; color: var(--ink-2); max-width: 58ch; margin-top: 6px; }
+  .exp-tools { margin: 20px 0 8px; }
+  .exp-search { width: 100%; font-family: var(--sans); font-size: 15px; padding: 12px 16px; border: 1px solid var(--rule); border-radius: 9px; background: var(--card); color: var(--ink); }
+  .exp-search:focus { outline: none; border-color: var(--boreal); }
+  .exp-filters { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; align-items: center; }
+  .fchip { font-family: var(--sans); font-size: 12.5px; font-weight: 700; padding: 6px 13px; border-radius: 16px; border: 1px solid var(--rule); background: var(--card); color: var(--ink-2); cursor: pointer; }
+  .fchip.on { background: var(--boreal); border-color: var(--boreal); color: #fff; }
+  .exp-filters select { font-family: var(--sans); font-size: 12.5px; font-weight: 700; padding: 6px 10px; border: 1px solid var(--rule); border-radius: 16px; background: var(--card); color: var(--ink-2); cursor: pointer; }
+  .exp-count { font-size: 12.5px; color: var(--ink-3); margin: 14px 2px 10px; }
+  .res-card { background: var(--card); border: 1px solid var(--rule); border-radius: 10px; padding: 14px 18px; margin-bottom: 10px; }
+  .res-meta { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 5px; }
+  .res-pill { font-size: 10.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 9px; border-radius: 10px; }
+  .p-actu { background: #E9F1EA; color: #2E5B40; } .p-rech { background: #E8EEF6; color: #2F5379; }
+  .p-fin { background: var(--chant-wash); color: #8A5E14; } .p-cal { background: #EFEAF6; color: #5F4A85; }
+  .p-appel { background: #F1EFE7; color: #6B6349; }
+  .res-ed { font-size: 11.5px; color: var(--ink-3); margin-left: auto; }
+  .res-card h3 { font-family: var(--serif); font-size: 17.5px; font-weight: 600; line-height: 1.35; }
+  .res-card p { font-size: 13.5px; color: var(--ink-2); margin-top: 3px; }
+  .res-card .reg { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--chant); }
+  .exp-empty { text-align: center; color: var(--ink-3); font-size: 14px; padding: 40px 0; }
+
+  /* Soumettre */
+  .sub-head h1 { font-family: var(--serif); font-size: 30px; font-weight: 600; text-wrap: balance; }
+  .sub-head p { font-size: 14.5px; color: var(--ink-2); max-width: 54ch; margin-top: 8px; }
+  .sub-form { background: var(--card); border: 1px solid var(--rule); border-radius: 12px; padding: 24px 26px; margin-top: 22px; }
+  .fg { margin-bottom: 16px; }
+  .fg label { display: block; font-size: 12.5px; font-weight: 700; color: var(--ink-2); margin-bottom: 5px; }
+  .fg input, .fg textarea { width: 100%; font-family: var(--sans); font-size: 14px; padding: 10px 13px; border: 1px solid var(--rule); border-radius: 7px; background: var(--cream); color: var(--ink); }
+  .fg input:focus, .fg textarea:focus { outline: none; border-color: var(--boreal); background: #fff; }
+  .fg textarea { resize: vertical; min-height: 70px; }
+  .sub-btn { background: var(--boreal); color: #fff; font-family: var(--sans); font-weight: 700; font-size: 14.5px; padding: 11px 24px; border: none; border-radius: 7px; cursor: pointer; }
+  .sub-btn:hover { background: var(--boreal-deep); }
+  .sub-ok { display: none; background: #E9F1EA; color: #2E5B40; font-size: 13.5px; font-weight: 600; border-radius: 7px; padding: 12px 16px; margin-top: 14px; }
+  .sub-steps { margin-top: 26px; font-size: 13.5px; color: var(--ink-2); }
+  .sub-steps li { margin: 0 0 8px 18px; }
+
+  /* Abonnement + footer */
+  .abo { background: var(--boreal); border-radius: 12px; color: #EFF3E9; padding: 26px 28px; margin-top: 46px; text-align: center; }
+  .abo h2 { font-family: var(--serif); font-style: italic; font-weight: 500; font-size: 23px; }
+  .abo p { font-size: 13px; color: #C2CFBC; margin: 6px auto 14px; max-width: 46ch; }
+  .abo-row { display: flex; gap: 8px; max-width: 380px; margin: 0 auto; }
+  .abo-row input { flex: 1; font-family: var(--sans); font-size: 13.5px; padding: 10px 13px; border: none; border-radius: 7px; }
+  .abo-row button { background: var(--chant); color: #241A08; font-family: var(--sans); font-weight: 700; font-size: 13.5px; padding: 10px 16px; border: none; border-radius: 7px; cursor: pointer; }
+  .abo .ok { display: none; font-size: 13px; font-weight: 700; color: var(--chant); margin-top: 10px; }
+  .foot { margin-top: 28px; text-align: center; font-size: 12.5px; color: var(--ink-3); }
+
+  @media print {
+    .proto-bar, .nav, .ed-bar, .abo, .foot { display: none; }
+    body { background: #fff; font-size: 12px; }
+    .view { display: none !important; } #view-numero { display: block !important; }
+    .wrap { padding: 0; max-width: none; }
+  }
+  @media (max-width: 620px) { .nav-tabs { width: 100%; } .res-ed { margin-left: 0; } }
+</style>
+
+<div class="proto-bar">Prototype « portail » — mini-site de démonstration · contenu fictif</div>
+
+<nav class="nav">
+  <div class="nav-in">
+    <a class="brand" href="#" onclick="show('numero');return false">Sous-bois<small>Portail PFNL du Québec</small></a>
+    <div class="nav-tabs">
+      <button class="nav-tab active" id="tab-numero" onclick="show('numero')">Le numéro</button>
+      <button class="nav-tab" id="tab-explorer" onclick="show('explorer')">Explorer</button>
+      <button class="nav-tab cta" id="tab-soumettre" onclick="show('soumettre')">Soumettre une nouvelle</button>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <!-- ================= VUE NUMÉRO ================= -->
+  <section class="view active" id="view-numero">
+    <div class="ed-bar">
+      <label for="ed-select">Numéro</label>
+      <select id="ed-select" onchange="showEdition(this.value)">
+        <option value="ed01">Nº 01 — Septembre 2026</option>
+        <option value="ed00">Nº 00 — Août 2026 (édition pilote)</option>
+      </select>
+      <button class="pdf" onclick="window.print()">Version PDF</button>
+    </div>
+
+    <!-- Édition 01 -->
+    <div id="ed01">
+      <div class="ed-head">
+        <div class="num">Numéro 01 · Septembre 2026</div>
+        <h1>La saison bat son plein</h1>
+      </div>
+      <p class="edito">Bienvenue dans ce premier numéro. Alors que la saison de cueillette des champignons forestiers bat son plein dans plusieurs régions, ce numéro fait le point sur les initiatives régionales — de la Beauce à la Côte-Nord — et sur trois occasions de financement à ne pas manquer.</p>
+      <p class="edito-sig">— L'équipe de concertation PFNL, Groupe AGÉCO</p>
+
+      <div class="rubrique">
+        <div class="rub-head"><h2>Actualités locales et régionales</h2><span class="k">5 brèves</span></div>
+        <div class="story"><span class="region">Chaudière-Appalaches — Beauce</span><h3>S'initier à la cueillette, deux fins de semaine durant</h3><p>Plantes médicinales comestibles le 12 septembre, champignons forestiers les 19 et 26 septembre, avec l'Association des propriétaires de boisés de la Beauce.</p><a class="lire" href="#" onclick="return false">Lire la source →</a></div>
+        <div class="story"><span class="region">Bas-Saint-Laurent</span><h3>Une récolte record de camerises fait rêver à une ligne de transformation</h3><p>La coopérative régionale évalue l'ajout d'une ligne dédiée aux petits fruits nordiques.</p><a class="lire" href="#" onclick="return false">Lire la source →</a></div>
+        <div class="story"><span class="region">Lanaudière</span><h3>L'érablière qui ne dort plus l'été</h3><p>Champignons forestiers, thé du Labrador : une érablière diversifie sa production au-delà de la saison des sucres.</p><a class="lire" href="#" onclick="return false">Lire la source →</a></div>
+        <div class="story"><span class="region">Saguenay–Lac-Saint-Jean</span><h3>Le chaga passe à la transformation</h3><p>Une nouvelle entreprise approvisionnera les marchés du thé fonctionnel et du nutraceutique. Signalée par le réseau.</p><a class="lire" href="#" onclick="return false">Lire la source →</a></div>
+        <div class="story"><span class="region">Côte-Nord</span><h3>La chicoutai à l'honneur au marché public de Sept-Îles</h3><p>Récolte abondante et ateliers de transformation annoncés cet automne.</p><a class="lire" href="#" onclick="return false">Lire la source →</a></div>
+      </div>
+
+      <div class="rubrique">
+        <div class="rub-head"><h2>Recherche, savoir-faire et innovation</h2><span class="k">2 brèves</span></div>
+        <div class="story"><span class="region">Gaspésie–Îles-de-la-Madeleine</span><h3>Le thé du Labrador apprivoisé en sous-bois aménagé</h3><p>Le Cégep de la Gaspésie et des Îles publie des rendements prometteurs en culture semi-contrôlée.</p><a class="lire" href="#" onclick="return false">Lire la source →</a></div>
+        <div class="story"><span class="region">Bas-Saint-Laurent</span><h3>Sécher les champignons sans perdre leurs actifs</h3><p>Le CDBQ développe un protocole de séchage à basse température destiné au marché nutraceutique.</p><a class="lire" href="#" onclick="return false">Lire la source →</a></div>
+      </div>
+
+      <div class="rubrique">
+        <div class="rub-head"><h2>Programmes et financement</h2><span class="k">3 ouverts</span></div>
+        <div class="fin-card"><div><div class="nom">Appel à projets PFNL — MRC des Laurentides</div><div class="cli">Entreprises, OBNL, coopératives</div></div><span class="ech">Avril 2027</span></div>
+        <div class="fin-card"><div><div class="nom">Soutien au transfert technologique</div><div class="cli">Établissements de recherche, regroupements de producteurs</div></div><span class="ech">5 octobre 2026</span></div>
+        <div class="fin-card"><div><div class="nom">Appui aux initiatives bioalimentaires régionales</div><div class="cli">Entreprises, OBNL, cégeps, CCTT, universités, MRC</div></div><span class="ech">31 mars 2029</span></div>
+      </div>
+
+      <div class="rubrique">
+        <div class="rub-head"><h2>Appels à participation</h2></div>
+        <ul class="appels">
+          <li>Partenaires régionaux recherchés — fiches nutritionnelles des PFNL. <a href="#" onclick="return false">Participer</a></li>
+          <li>Trois groupes de travail cherchent des représentants sectoriels. <a href="#" onclick="return false">S'informer</a></li>
+          <li>Sondage sectoriel 2026 — avant le 31 octobre. <a href="#" onclick="return false">Répondre</a></li>
+        </ul>
+      </div>
+
+      <div class="rubrique">
+        <div class="rub-head"><h2>Calendrier</h2></div>
+        <ul class="cal">
+          <li><span class="d">18–20 sept.</span><span class="e">Festival des champignons forestiers <small>· Kamouraska</small></span></li>
+          <li><span class="d">9–12 oct.</span><span class="e">Délices d'automne <small>· Trois-Rivières</small></span></li>
+          <li><span class="d">31 oct.</span><span class="e">Date limite — sondage sectoriel PFNL</span></li>
+          <li><span class="d">25–26 nov.</span><span class="e">3ᵉ Sommet sur le mycotourisme <small>· Mont-Laurier</small></span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Édition 00 (pilote) -->
+    <div id="ed00" hidden>
+      <div class="ed-head">
+        <div class="num">Numéro 00 · Août 2026 — édition pilote</div>
+        <h1>Un premier tour de forêt</h1>
+      </div>
+      <p class="edito">Édition pilote diffusée à un cercle restreint pour calibrer la formule. Trois nouvelles régionales et un nouvel appel à projets au menu.</p>
+      <p class="edito-sig">— L'équipe de concertation PFNL, Groupe AGÉCO</p>
+      <div class="rubrique">
+        <div class="rub-head"><h2>Actualités locales et régionales</h2><span class="k">2 brèves</span></div>
+        <div class="story"><span class="region">Chaudière-Appalaches — Beauce</span><h3>Premières formations d'initiation à la cueillette en août</h3><p>Plantes médicinales comestibles le 15 août, champignons les 16 et 22 août.</p><a class="lire" href="#" onclick="return false">Lire la source →</a></div>
+        <div class="story"><span class="region">Mauricie</span><h3>Un sentier de mycotourisme guidé attire ses premiers groupes</h3><p>Une pourvoirie ajoute la cueillette de champignons à son offre d'automne.</p><a class="lire" href="#" onclick="return false">Lire la source →</a></div>
+      </div>
+      <div class="rubrique">
+        <div class="rub-head"><h2>Recherche, savoir-faire et innovation</h2><span class="k">1 brève</span></div>
+        <div class="story"><span class="region">Bas-Saint-Laurent</span><h3>Biopterre publie des fiches techniques sur la camerise</h3><p>Régie de culture, récolte et mise en marché à l'intention des producteurs en démarrage.</p><a class="lire" href="#" onclick="return false">Lire la source →</a></div>
+      </div>
+      <div class="rubrique">
+        <div class="rub-head"><h2>Programmes et financement</h2><span class="k">1 nouveau</span></div>
+        <div class="fin-card"><div><div class="nom">Appel à projets PFNL — MRC des Laurentides (lancement)</div><div class="cli">Entreprises, OBNL, coopératives</div></div><span class="ech">Avril 2027</span></div>
+      </div>
+      <div class="rubrique">
+        <div class="rub-head"><h2>Calendrier</h2></div>
+        <ul class="cal"><li><span class="d">18–20 sept.</span><span class="e">Festival des champignons forestiers <small>· Kamouraska</small></span></li></ul>
+      </div>
+    </div>
+
+    <div class="abo">
+      <h2>Un courriel par mois, jamais plus.</h2>
+      <p>Recevez l'avis de parution avec le résumé du numéro. Désabonnement en un clic.</p>
+      <div class="abo-row"><input type="email" placeholder="votre@courriel.ca" aria-label="Courriel"><button onclick="aboDemo()">S'abonner</button></div>
+      <div class="ok" id="abo-ok">Prototype — l'abonnement sera activé dans la version finale.</div>
+    </div>
+    <div class="foot">Sous-bois est produit par Groupe AGÉCO, agent de concertation du secteur des PFNL.</div>
+  </section>
+
+  <!-- ================= VUE EXPLORER ================= -->
+  <section class="view" id="view-explorer">
+    <div class="exp-head">
+      <h1>Explorer les numéros</h1>
+      <p>Toutes les nouvelles publiées, dans tous les numéros. Cherchez un mot, une région ou un thème — retrouvez un programme de financement ou une formation annoncés il y a des mois.</p>
+    </div>
+    <div class="exp-tools">
+      <input class="exp-search" id="q" type="search" placeholder="Chercher : camerise, financement, Beauce, chaga…" oninput="renderExp()">
+      <div class="exp-filters" id="theme-chips">
+        <button class="fchip on" data-t="" onclick="pickTheme(this)">Tout</button>
+        <button class="fchip" data-t="actu" onclick="pickTheme(this)">Actualités</button>
+        <button class="fchip" data-t="rech" onclick="pickTheme(this)">Recherche</button>
+        <button class="fchip" data-t="fin" onclick="pickTheme(this)">Financement</button>
+        <button class="fchip" data-t="cal" onclick="pickTheme(this)">Calendrier</button>
+        <button class="fchip" data-t="appel" onclick="pickTheme(this)">Appels</button>
+        <select id="reg" onchange="renderExp()">
+          <option value="">Toutes les régions</option>
+        </select>
+      </div>
+    </div>
+    <div class="exp-count" id="count"></div>
+    <div id="results"></div>
+  </section>
+
+  <!-- ================= VUE SOUMETTRE ================= -->
+  <section class="view" id="view-soumettre">
+    <div class="sub-head">
+      <h1>Vous avez vu passer une nouvelle sur les PFNL ?</h1>
+      <p>Une initiative dans votre région, une formation, un prix, un appel à projets — même vu dans un groupe Facebook. Collez le lien : ça prend 30 secondes, et la nouvelle pourra apparaître dans le prochain numéro.</p>
+    </div>
+    <div class="sub-form">
+      <div class="fg"><label for="s-url">Lien vers l'article ou la publication</label><input id="s-url" type="url" placeholder="https://…"></div>
+      <div class="fg"><label for="s-note">Pourquoi c'est intéressant (facultatif)</label><textarea id="s-note" placeholder="Un mot de contexte pour l'équipe."></textarea></div>
+      <div class="fg"><label for="s-nom">Votre nom (facultatif)</label><input id="s-nom" type="text" placeholder="Pour vous remercier dans le numéro, si vous le souhaitez"></div>
+      <button class="sub-btn" onclick="subDemo()">Envoyer la suggestion</button>
+      <div class="sub-ok" id="sub-ok">Merci ! (Prototype — dans la version finale, la suggestion part directement dans l'outil de veille.)</div>
+    </div>
+    <ol class="sub-steps">
+      <li>Votre lien arrive dans l'outil de veille, avec votre nom si vous l'avez donné.</li>
+      <li>L'équipe de concertation le valide et le classe (actualité, financement, événement…).</li>
+      <li>S'il est retenu, il paraît dans le numéro suivant — avec la source d'origine.</li>
+    </ol>
+  </section>
+</div>
+
+<script>
+  // ---------- Données de démonstration (dans la vraie app : servies par l'API) ----------
+  var ITEMS = [
+    {ed:'Nº 01 · Sept. 2026', t:'actu', reg:'Chaudière-Appalaches', ti:"S'initier à la cueillette, deux fins de semaine durant", tx:"Formations de l'Association des propriétaires de boisés de la Beauce : plantes médicinales (12 sept.), champignons (19 et 26 sept.)."},
+    {ed:'Nº 01 · Sept. 2026', t:'actu', reg:'Bas-Saint-Laurent', ti:"Récolte record de camerises : une ligne de transformation à l'étude", tx:"La coopérative régionale évalue une ligne dédiée aux petits fruits nordiques."},
+    {ed:'Nº 01 · Sept. 2026', t:'actu', reg:'Lanaudière', ti:"L'érablière qui ne dort plus l'été", tx:"Diversification vers les champignons forestiers et le thé du Labrador."},
+    {ed:'Nº 01 · Sept. 2026', t:'actu', reg:'Saguenay–Lac-Saint-Jean', ti:"Le chaga passe à la transformation", tx:"Nouvelle entreprise pour les marchés du thé fonctionnel et du nutraceutique. Signalée par le réseau."},
+    {ed:'Nº 01 · Sept. 2026', t:'actu', reg:'Côte-Nord', ti:"La chicoutai à l'honneur au marché public de Sept-Îles", tx:"Récolte abondante, ateliers de transformation annoncés cet automne."},
+    {ed:'Nº 01 · Sept. 2026', t:'rech', reg:'Gaspésie–Îles-de-la-Madeleine', ti:"Le thé du Labrador apprivoisé en sous-bois aménagé", tx:"Projet pilote du Cégep de la Gaspésie et des Îles : rendements prometteurs en culture semi-contrôlée."},
+    {ed:'Nº 01 · Sept. 2026', t:'rech', reg:'Bas-Saint-Laurent', ti:"Sécher les champignons sans perdre leurs actifs", tx:"Protocole de séchage à basse température du CDBQ pour le marché nutraceutique."},
+    {ed:'Nº 01 · Sept. 2026', t:'fin', reg:'Laurentides', ti:"Appel à projets PFNL — MRC des Laurentides", tx:"Entreprises, OBNL, coopératives. Échéance : avril 2027."},
+    {ed:'Nº 01 · Sept. 2026', t:'fin', reg:'Québec (ensemble)', ti:"Soutien au transfert technologique", tx:"Établissements de recherche et regroupements de producteurs. Échéance : 5 octobre 2026."},
+    {ed:'Nº 01 · Sept. 2026', t:'fin', reg:'Québec (ensemble)', ti:"Appui aux initiatives bioalimentaires régionales", tx:"Entreprises, OBNL, cégeps, CCTT, universités, MRC. Échéance : 31 mars 2029."},
+    {ed:'Nº 01 · Sept. 2026', t:'cal', reg:'Bas-Saint-Laurent', ti:"Festival des champignons forestiers du Kamouraska", tx:"18 au 20 septembre 2026, Kamouraska."},
+    {ed:'Nº 01 · Sept. 2026', t:'cal', reg:'Mauricie', ti:"Délices d'automne", tx:"9 au 12 octobre 2026, Trois-Rivières."},
+    {ed:'Nº 01 · Sept. 2026', t:'cal', reg:'Laurentides', ti:"3ᵉ Sommet sur le mycotourisme", tx:"25 et 26 novembre 2026, Mont-Laurier."},
+    {ed:'Nº 01 · Sept. 2026', t:'appel', reg:'Québec (ensemble)', ti:"Partenaires recherchés — fiches nutritionnelles des PFNL", tx:"Projet d'élaboration de fiches nutritionnelles et propriétés fonctionnelles."},
+    {ed:'Nº 01 · Sept. 2026', t:'appel', reg:'Québec (ensemble)', ti:"Sondage sectoriel 2026", tx:"Portrait de la filière, 15 minutes. Avant le 31 octobre."},
+    {ed:'Nº 00 · Août 2026', t:'actu', reg:'Chaudière-Appalaches', ti:"Premières formations d'initiation à la cueillette en août", tx:"Plantes médicinales le 15 août, champignons les 16 et 22 août, en Beauce."},
+    {ed:'Nº 00 · Août 2026', t:'actu', reg:'Mauricie', ti:"Un sentier de mycotourisme guidé attire ses premiers groupes", tx:"Une pourvoirie ajoute la cueillette de champignons à son offre d'automne."},
+    {ed:'Nº 00 · Août 2026', t:'rech', reg:'Bas-Saint-Laurent', ti:"Biopterre publie des fiches techniques sur la camerise", tx:"Régie de culture, récolte et mise en marché pour les producteurs en démarrage."},
+    {ed:'Nº 00 · Août 2026', t:'fin', reg:'Laurentides', ti:"Lancement — Appel à projets PFNL des Laurentides", tx:"Ouvert aux entreprises, OBNL et coopératives jusqu'en avril 2027."}
+  ];
+  var THEME_LABEL = {actu:'Actualités', rech:'Recherche', fin:'Financement', cal:'Calendrier', appel:'Appel'};
+  var THEME_CLS = {actu:'p-actu', rech:'p-rech', fin:'p-fin', cal:'p-cal', appel:'p-appel'};
+  var curTheme = '';
+
+  function show(id) {
+    ['numero','explorer','soumettre'].forEach(function(v){
+      document.getElementById('view-' + v).classList.toggle('active', v === id);
+      document.getElementById('tab-' + v).classList.toggle('active', v === id);
+    });
+    window.scrollTo(0, 0);
+  }
+  function showEdition(id) {
+    document.getElementById('ed01').hidden = (id !== 'ed01');
+    document.getElementById('ed00').hidden = (id !== 'ed00');
+  }
+  function pickTheme(btn) {
+    curTheme = btn.dataset.t;
+    document.querySelectorAll('#theme-chips .fchip').forEach(function(c){ c.classList.toggle('on', c === btn); });
+    renderExp();
+  }
+  function renderExp() {
+    var q = document.getElementById('q').value.trim().toLowerCase();
+    var reg = document.getElementById('reg').value;
+    var out = ITEMS.filter(function(it){
+      if (curTheme && it.t !== curTheme) return false;
+      if (reg && it.reg !== reg) return false;
+      if (q && (it.ti + ' ' + it.tx + ' ' + it.reg).toLowerCase().indexOf(q) === -1) return false;
+      return true;
+    });
+    document.getElementById('count').textContent = out.length + (out.length > 1 ? ' résultats' : ' résultat') + ' · 2 numéros parcourus';
+    var box = document.getElementById('results');
+    if (!out.length) { box.innerHTML = '<div class="exp-empty">Aucun résultat — essayez un autre mot ou retirez un filtre.</div>'; return; }
+    box.innerHTML = out.map(function(it){
+      return '<div class="res-card"><div class="res-meta"><span class="res-pill ' + THEME_CLS[it.t] + '">' + THEME_LABEL[it.t] + '</span><span class="reg">' + it.reg + '</span><span class="res-ed">' + it.ed + '</span></div><h3>' + it.ti + '</h3><p>' + it.tx + '</p></div>';
+    }).join('');
+  }
+  // Peupler le sélecteur de régions à partir des données
+  (function(){
+    var regs = [];
+    ITEMS.forEach(function(it){ if (regs.indexOf(it.reg) === -1) regs.push(it.reg); });
+    regs.sort();
+    var sel = document.getElementById('reg');
+    regs.forEach(function(r){ var o = document.createElement('option'); o.value = r; o.textContent = r; sel.appendChild(o); });
+    renderExp();
+  })();
+  function aboDemo(){ document.getElementById('abo-ok').style.display = 'block'; }
+  function subDemo(){ document.getElementById('sub-ok').style.display = 'block'; }
+</script>
+
+</html>

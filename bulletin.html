@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="fr">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Le Bulletin PFNL</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F7F6F1;
+    --card: #FFFFFF;
+    --ink: #1E2A22;
+    --ink-2: #55625A;
+    --ink-3: #8A948C;
+    --rule: #DCD9CE;
+    --spruce: #2E5B40;
+    --spruce-deep: #1F4230;
+    --spruce-wash: #E7EFE9;
+    --amber: #A26A1B;
+    --amber-wash: #F5EBD9;
+    --sans: 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif;
+    --mono: 'IBM Plex Mono', 'Courier New', monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  a { color: var(--spruce); text-decoration: none; font-weight: 600; }
+  a:hover { text-decoration: underline; }
+  .proto-bar { background: var(--ink); color: #CFCBBE; font-family: var(--mono); font-size: 11px; text-align: center; padding: 6px 14px; letter-spacing: 0.04em; }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 34px 22px 60px; }
+
+  /* Masthead */
+  .masthead { border-top: 4px solid var(--ink); border-bottom: 1px solid var(--ink); padding: 16px 0 14px; }
+  .masthead h1 { font-weight: 900; font-size: 34px; letter-spacing: -0.015em; line-height: 1; }
+  .masthead h1 span { color: var(--spruce); }
+  .mast-row { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
+  .mast-tag { font-size: 13px; color: var(--ink-2); }
+  .mast-num { font-family: var(--mono); font-size: 12px; color: var(--ink-2); }
+
+  /* L'essentiel */
+  .essentiel { background: var(--spruce-wash); border-left: 4px solid var(--spruce); padding: 14px 18px; margin: 22px 0 6px; }
+  .essentiel .k { font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--spruce-deep); margin-bottom: 8px; }
+  .essentiel li { margin: 0 0 6px 18px; font-size: 14px; }
+  .essentiel li:last-child { margin-bottom: 0; }
+
+  .ouverture { padding: 18px 0 4px; font-size: 15px; color: var(--ink-2); }
+  .ouverture strong { color: var(--ink); }
+
+  /* Sections */
+  .sec { margin-top: 30px; }
+  .sec-head { display: flex; align-items: baseline; gap: 12px; border-bottom: 2px solid var(--ink); padding-bottom: 6px; margin-bottom: 14px; }
+  .sec-head h2 { font-size: 17px; font-weight: 900; letter-spacing: 0.01em; text-transform: uppercase; }
+  .sec-head .n { font-family: var(--mono); font-size: 11px; color: var(--ink-3); margin-left: auto; }
+
+  .region { margin-bottom: 16px; }
+  .region-name { font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--spruce-deep); background: var(--spruce-wash); display: inline-block; padding: 2px 8px; border-radius: 3px; margin-bottom: 7px; }
+  .breve { padding: 0 0 10px; margin-bottom: 10px; border-bottom: 1px solid var(--rule); }
+  .breve:last-child { border-bottom: none; margin-bottom: 0; }
+  .breve h3 { font-size: 15px; font-weight: 700; line-height: 1.4; text-wrap: balance; }
+  .breve p { font-size: 13.5px; color: var(--ink-2); margin-top: 4px; }
+  .breve .src { font-family: var(--mono); font-size: 11px; color: var(--ink-3); margin-top: 5px; display: block; }
+  .breve .src a { font-weight: 500; }
+
+  /* Chiffre */
+  .chiffre { display: flex; align-items: center; gap: 18px; background: var(--amber-wash); border-left: 4px solid var(--amber); padding: 14px 18px; margin-top: 30px; }
+  .chiffre .big { font-weight: 900; font-size: 40px; color: var(--amber); line-height: 1; font-variant-numeric: tabular-nums; flex-shrink: 0; }
+  .chiffre .txt { font-size: 13.5px; color: var(--ink-2); }
+  .chiffre .txt strong { color: var(--ink); }
+
+  /* Table financement */
+  .fin { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  .fin th { font-family: var(--mono); font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); text-align: left; padding: 6px 8px; border-bottom: 2px solid var(--ink); }
+  .fin td { padding: 9px 8px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  .fin td:first-child { font-weight: 700; }
+  .fin .ech { font-family: var(--mono); font-size: 12px; white-space: nowrap; color: var(--spruce-deep); font-weight: 600; }
+  .fin-scroll { overflow-x: auto; }
+
+  /* Calendrier */
+  .cal { list-style: none; }
+  .cal li { display: flex; gap: 14px; padding: 8px 0; border-bottom: 1px solid var(--rule); align-items: baseline; }
+  .cal li:last-child { border-bottom: none; }
+  .cal .d { font-family: var(--mono); font-size: 12px; font-weight: 600; color: var(--spruce-deep); min-width: 92px; flex-shrink: 0; }
+  .cal .e { font-size: 14px; }
+  .cal .e small { color: var(--ink-3); font-size: 12.5px; }
+
+  .appel { margin: 0 0 8px 18px; font-size: 14px; }
+
+  /* Footer / portail */
+  .portail { background: var(--spruce-deep); color: #EAF2EC; border-radius: 6px; padding: 24px 26px; margin-top: 40px; text-align: center; }
+  .portail h2 { font-size: 19px; font-weight: 900; text-wrap: balance; }
+  .portail p { font-size: 13.5px; color: #BDD3C4; margin: 8px auto 14px; max-width: 46ch; }
+  .portail .cta { display: inline-block; background: #fff; color: var(--spruce-deep); font-weight: 700; font-size: 14px; padding: 10px 22px; border-radius: 5px; }
+  .foot { margin-top: 26px; padding-top: 14px; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 12.5px; color: var(--ink-3); align-items: center; }
+  .foot .links { display: flex; gap: 16px; }
+  .btn-pdf { font-family: var(--sans); font-size: 12.5px; font-weight: 600; color: var(--ink-2); background: none; border: 1px solid var(--rule); border-radius: 5px; padding: 6px 12px; cursor: pointer; }
+  .btn-pdf:hover { border-color: var(--ink-2); }
+
+  @media print {
+    .proto-bar, .portail, .btn-pdf, .foot .links { display: none; }
+    body { background: #fff; font-size: 12px; }
+    .wrap { padding: 0; max-width: none; }
+    a { color: var(--ink); }
+  }
+  @media (max-width: 560px) { .masthead h1 { font-size: 27px; } .chiffre .big { font-size: 32px; } }
+</style>
+
+<div class="proto-bar">PROTOTYPE A / 3 — « Le bulletin » · contenu de démonstration</div>
+<div class="wrap">
+
+  <header class="masthead">
+    <h1>Le Bulletin <span>PFNL</span></h1>
+    <div class="mast-row">
+      <span class="mast-tag">L'essentiel des produits forestiers non ligneux au Québec, une fois par mois.</span>
+      <span class="mast-num">SEPTEMBRE 2026 · Nº 01</span>
+    </div>
+  </header>
+
+  <div class="essentiel">
+    <div class="k">L'essentiel ce mois-ci</div>
+    <ul>
+      <li>Trois <a href="#fin">occasions de financement</a> actuellement ouvertes, dont un nouvel appel à projets dans les Laurentides.</li>
+      <li>La saison des champignons bat son plein : formations en Beauce, <a href="#cal">festival au Kamouraska</a> à la fin du mois.</li>
+      <li>Le thé du Labrador cultivé en sous-bois donne des <a href="#rech">rendements prometteurs</a> en Gaspésie.</li>
+    </ul>
+  </div>
+
+  <p class="ouverture"><strong>Bienvenue dans ce premier numéro.</strong> Alors que la saison de cueillette bat son plein dans plusieurs régions, ce numéro fait le point sur les initiatives régionales et trois occasions de financement à ne pas manquer. — <em>L'équipe de concertation PFNL, Groupe AGÉCO</em></p>
+
+  <section class="sec">
+    <div class="sec-head"><h2>Actualités régionales</h2><span class="n">7 brèves · 5 régions</span></div>
+
+    <div class="region">
+      <span class="region-name">Chaudière-Appalaches · Beauce</span>
+      <div class="breve">
+        <h3>Deux formations d'initiation à la cueillette offertes en septembre</h3>
+        <p>L'Association des propriétaires de boisés de la Beauce poursuit sa série : plantes médicinales comestibles le 12 septembre, champignons forestiers les 19 et 26 septembre.</p>
+        <span class="src">Association des propriétaires de boisés de la Beauce · <a href="#" onclick="return false">source</a></span>
+      </div>
+    </div>
+
+    <div class="region">
+      <span class="region-name">Bas-Saint-Laurent</span>
+      <div class="breve">
+        <h3>Récolte record de camerises : une nouvelle ligne de transformation à l'étude</h3>
+        <p>Portée par une saison exceptionnelle, la coopérative régionale évalue l'ajout d'une ligne dédiée aux petits fruits nordiques.</p>
+        <span class="src">Le Soleil · <a href="#" onclick="return false">source</a></span>
+      </div>
+    </div>
+
+    <div class="region">
+      <span class="region-name">Lanaudière</span>
+      <div class="breve">
+        <h3>Une érablière se diversifie vers les champignons forestiers et le thé du Labrador</h3>
+        <p>Un exemple de plus des érablières qui valorisent l'ensemble de leur boisé au-delà de la saison des sucres.</p>
+        <span class="src">La Terre de Chez Nous · <a href="#" onclick="return false">source</a></span>
+      </div>
+    </div>
+
+    <div class="region">
+      <span class="region-name">Saguenay–Lac-Saint-Jean</span>
+      <div class="breve">
+        <h3>Une nouvelle entreprise de transformation du chaga démarre ses activités</h3>
+        <p>Signalée par le réseau : l'entreprise approvisionnera les marchés du thé fonctionnel et du nutraceutique.</p>
+        <span class="src">Suggestion du réseau · <a href="#" onclick="return false">source</a></span>
+      </div>
+    </div>
+
+    <div class="region">
+      <span class="region-name">Côte-Nord</span>
+      <div class="breve">
+        <h3>La chicoutai à l'honneur au marché public de Sept-Îles</h3>
+        <p>Producteurs et cueilleurs de la région écoulent une récolte abondante ; des ateliers de transformation sont annoncés cet automne.</p>
+        <span class="src">Radio-Canada · <a href="#" onclick="return false">source</a></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="rech">
+    <div class="sec-head"><h2>Recherche &amp; innovation</h2><span class="n">2 brèves</span></div>
+    <div class="breve">
+      <h3>Domestication du thé du Labrador en sous-bois : des rendements prometteurs</h3>
+      <p>Le Cégep de la Gaspésie et des Îles publie les résultats d'un projet pilote sur la culture semi-contrôlée en sous-bois aménagé.</p>
+      <span class="src">Gaspésie–Îles-de-la-Madeleine · <a href="#" onclick="return false">source</a></span>
+    </div>
+    <div class="breve">
+      <h3>Un séchage à basse température qui préserve les composés actifs des champignons</h3>
+      <p>Le CDBQ développe un protocole destiné au marché nutraceutique, en collaboration avec des transformateurs régionaux.</p>
+      <span class="src">Bas-Saint-Laurent · <a href="#" onclick="return false">source</a></span>
+    </div>
+  </section>
+
+  <div class="chiffre">
+    <div class="big">2/10</div>
+    <div class="txt"><strong>Le chiffre du mois.</strong> Deux finalistes sur dix du concours Tournez-vous vers l'excellence sont des entreprises de PFNL.</div>
+  </div>
+
+  <section class="sec" id="fin">
+    <div class="sec-head"><h2>Financement</h2><span class="n">3 programmes ouverts</span></div>
+    <div class="fin-scroll">
+      <table class="fin">
+        <tr><th>Programme</th><th>Clientèle admissible</th><th>Échéance</th></tr>
+        <tr><td>Appel à projets PFNL — MRC des Laurentides <em>(nouveau)</em></td><td>Entreprises, OBNL, coopératives</td><td class="ech">Avril 2027</td></tr>
+        <tr><td>Soutien au transfert technologique</td><td>Établissements de recherche, regroupements d'entreprises ou de producteurs</td><td class="ech">5 oct. 2026</td></tr>
+        <tr><td>Appui aux initiatives bioalimentaires régionales</td><td>Entreprises, OBNL, cégeps, CCTT, universités, MRC</td><td class="ech">31 mars 2029</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2>Appels à participation</h2></div>
+    <ul>
+      <li class="appel">Recherche de partenaires régionaux — projet de fiches nutritionnelles et propriétés fonctionnelles des PFNL. <a href="#" onclick="return false">Participer</a></li>
+      <li class="appel">Trois groupes de travail cherchent des représentants sectoriels (dénomination, salubrité, formation). <a href="#" onclick="return false">S'informer</a></li>
+      <li class="appel">Sondage sectoriel 2026 — votre portrait de la filière, 15 minutes. <a href="#" onclick="return false">Répondre avant le 31 octobre</a></li>
+    </ul>
+  </section>
+
+  <section class="sec" id="cal">
+    <div class="sec-head"><h2>Calendrier</h2></div>
+    <ul class="cal">
+      <li><span class="d">18–20 SEPT</span><span class="e">Festival des champignons forestiers du Kamouraska <small>· Kamouraska</small></span></li>
+      <li><span class="d">9–12 OCT</span><span class="e">Délices d'automne <small>· Trois-Rivières</small></span></li>
+      <li><span class="d">31 OCT</span><span class="e">Date limite — sondage sectoriel PFNL</span></li>
+      <li><span class="d">25–26 NOV</span><span class="e">3ᵉ Sommet sur le mycotourisme <small>· Mont-Laurier</small></span></li>
+    </ul>
+  </section>
+
+  <div class="portail">
+    <h2>Vous avez vu passer une nouvelle sur les PFNL ?</h2>
+    <p>Une initiative dans votre région, une formation, un appel à projets : partagez-la et elle pourra apparaître dans le prochain numéro. Ça prend 30 secondes.</p>
+    <a class="cta" href="#" onclick="return false">Soumettre une nouvelle</a>
+  </div>
+
+  <div class="foot">
+    <span>Le Bulletin PFNL · produit par Groupe AGÉCO, agent de concertation du secteur</span>
+    <div class="links">
+      <a href="#" onclick="return false">Numéros précédents</a>
+      <button class="btn-pdf" onclick="window.print()">Version PDF</button>
+    </div>
+  </div>
+</div>
+
+</html>
