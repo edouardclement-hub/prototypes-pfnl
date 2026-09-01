@@ -67,6 +67,16 @@
   .cal .e small { color: var(--ink-3); }
   .appels li { margin: 0 0 8px 18px; font-size: 14px; }
 
+  .chiffre { text-align: center; background: var(--card); border: 1px solid var(--rule); border-radius: 12px; padding: 20px 24px; margin-top: 30px; }
+  .chiffre .k { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--moss); }
+  .chiffre .big { font-family: var(--serif); font-size: 46px; font-weight: 600; color: var(--chant); line-height: 1.1; margin-top: 4px; }
+  .chiffre .txt { font-size: 13px; color: var(--ink-2); max-width: 44ch; margin: 4px auto 0; }
+  .portrait-mini { display: flex; gap: 16px; align-items: flex-start; background: var(--card); border: 1px solid var(--rule); border-radius: 12px; padding: 18px 20px; }
+  .portrait-mini .avatar { width: 52px; height: 52px; border-radius: 50%; background: var(--boreal); color: var(--chant-wash); font-family: var(--serif); font-size: 21px; font-weight: 600; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .portrait-mini h3 { font-family: var(--serif); font-size: 18px; font-weight: 600; }
+  .portrait-mini .role { font-size: 12px; color: var(--ink-3); }
+  .portrait-mini p { font-size: 13.5px; color: var(--ink-2); margin-top: 5px; }
+
   /* Explorer */
   .exp-head h1 { font-family: var(--serif); font-size: 30px; font-weight: 600; }
   .exp-head p { font-size: 14px; color: var(--ink-2); max-width: 58ch; margin-top: 6px; }
@@ -158,6 +168,24 @@
       </div>
       <p class="edito">Bienvenue dans ce premier numéro. Alors que la saison de cueillette des champignons forestiers bat son plein dans plusieurs régions, ce numéro fait le point sur les initiatives régionales — de la Beauce à la Côte-Nord — et sur trois occasions de financement à ne pas manquer.</p>
       <p class="edito-sig">— L'équipe de concertation PFNL, Groupe AGÉCO</p>
+
+      <div class="chiffre">
+        <div class="k">En bref · Le chiffre du mois</div>
+        <div class="big">2 sur 10</div>
+        <p class="txt">finalistes du concours Tournez-vous vers l'excellence sont des entreprises de PFNL.</p>
+      </div>
+
+      <div class="rubrique">
+        <div class="rub-head"><h2>Portrait du mois</h2><span class="k">En alternance</span></div>
+        <div class="portrait-mini">
+          <div class="avatar">MT</div>
+          <div>
+            <h3>Marie-Terre Bouchard, cueilleuse-entrepreneure</h3>
+            <div class="role">Côte-Nord · exemple fictif</div>
+            <p>Partie d'une cueillette familiale de chicoutai, elle approvisionne aujourd'hui cinq restaurants et deux transformateurs — et forme la relève. <a href="#" onclick="return false">Lire l'entrevue →</a></p>
+          </div>
+        </div>
+      </div>
 
       <div class="rubrique">
         <div class="rub-head"><h2>Actualités locales et régionales</h2><span class="k">5 brèves</span></div>
