@@ -136,12 +136,27 @@
   .side-sub .cta { display: inline-block; background: var(--green-deep); color: #fff; font-weight: 700; font-size: 13px; padding: 9px 16px; border-radius: 7px; }
   .side-sub .cta:hover { text-decoration: none; filter: brightness(1.1); }
 
-  .foot { margin-top: 10px; padding-top: 14px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 12.5px; color: var(--ink-3); align-items: center; }
+  .abo-band {
+    background: var(--green-deep); color: #fff; border-radius: 12px;
+    padding: 26px 32px; margin-top: 38px;
+    display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+  }
+  .abo-band h3 { font-size: 20px; font-weight: 800; letter-spacing: -0.01em; }
+  .abo-band p { font-size: 13.5px; color: #B9D4C3; margin-top: 5px; max-width: 54ch; }
+  .abo-band .cta {
+    background: #fff; color: var(--green-deep); font-weight: 800; font-size: 14.5px;
+    padding: 13px 26px; border-radius: 8px; white-space: nowrap; text-decoration: none;
+  }
+  .abo-band .cta:hover { text-decoration: none; background: #EAF3ED; }
+  .foot { margin-top: 26px; padding-top: 14px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 12.5px; color: var(--ink-3); align-items: flex-start; }
+  .foot-legal { margin-top: 5px; }
+  .foot-legal a { color: var(--ink-2); font-weight: 700; border-bottom: 1px solid rgba(31,122,77,.4); }
+  .foot-legal a:hover { color: var(--green-deep); text-decoration: none; }
   .foot .links { display: flex; gap: 16px; align-items: center; }
   .btn-pdf { font-family: var(--sans); font-size: 12.5px; font-weight: 700; color: var(--ink-2); background: none; border: 1px solid var(--line); border-radius: 6px; padding: 6px 13px; cursor: pointer; }
 
   @media print {
-    .proto-bar, .side-sub, .btn-pdf, .foot .links { display: none; }
+    .proto-bar, .side-sub, .btn-pdf, .abo-band, .foot .links { display: none; }
     body { background: #fff; font-size: 12px; }
     .wrap { padding: 0; max-width: none; }
     .layout { grid-template-columns: 1fr; }
@@ -306,10 +321,21 @@
     </div>
   </div>
 
+  <div class="abo-band">
+    <div>
+      <h3>Ne rien manquer du secteur</h3>
+      <p>Recevez Radar chaque mois : les nouvelles des régions, les programmes ouverts et les rendez-vous à l'agenda. Un seul courriel par mois.</p>
+    </div>
+    <a class="cta" href="mailto:infolettre@concertationpfnl.ca?subject=Abonnement%20%C3%A0%20Radar&amp;body=Bonjour%2C%0A%0AJe%20souhaite%20m%27abonner%20%C3%A0%20l%27infolettre%20Radar.%0A%0ANom%20%3A%0AOrganisation%20%3A%0AR%C3%A9gion%20%3A%0A">S'inscrire à l'infolettre</a>
+  </div>
+
   <div class="foot">
-    <span><strong>Radar</strong> est l'infolettre mensuelle de Concertation PFNL, portail animé par Groupe AGÉCO.</span>
+    <div>
+      <div><strong>Radar</strong> est l'infolettre mensuelle de Concertation PFNL, portail animé par <a href="https://groupeageco.ca" target="_blank" rel="noopener noreferrer">Groupe AGÉCO</a>.</div>
+      <div class="foot-legal">© 2026 Groupe AGÉCO · Toute reproduction interdite sans accord préalable.</div>
+    </div>
     <div class="links">
-            <button class="btn-pdf" onclick="window.print()">Version PDF</button>
+      <button class="btn-pdf" onclick="window.print()">Version PDF</button>
     </div>
   </div>
 </div>
