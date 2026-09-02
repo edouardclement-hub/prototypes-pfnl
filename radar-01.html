@@ -31,10 +31,26 @@
   .head .meta .n { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-2); }
   .head .meta .t { font-size: 12px; color: var(--ink-3); }
 
-  .ouverture { border-left: 4px solid var(--green); background: var(--panel); border-radius: 0 10px 10px 0; padding: 16px 22px; margin: 26px 0 6px; max-width: 76ch; }
-  .ouverture p { font-size: 15.5px; }
-  .ouverture p + p { margin-top: 10px; }
-  .ouverture .sig { font-size: 13px; color: var(--ink-3); margin-top: 10px; }
+  .ouverture {
+    display: grid; grid-template-columns: 1fr; gap: 22px;
+    border: 1px solid var(--line); border-left: 5px solid var(--green);
+    background: var(--panel); border-radius: 0 12px 12px 0;
+    padding: 26px 30px; margin: 28px 0 6px;
+  }
+  .ouverture p { font-size: 15.5px; max-width: 66ch; }
+  .ouverture p:first-child { font-size: 17px; line-height: 1.5; }
+  .ouverture p + p { margin-top: 12px; }
+  .ouverture .sig { font-size: 12.5px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-3); margin-top: 16px; }
+  .ouv-resume { border-top: 1px solid var(--line); padding-top: 18px; }
+  .ouv-k { font-size: 11px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 10px; }
+  .ouv-l { display: flex; align-items: baseline; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--line); }
+  .ouv-l:last-child { border-bottom: none; padding-bottom: 0; }
+  .ouv-l .n { font-size: 23px; font-weight: 800; color: var(--green); min-width: 32px; font-variant-numeric: tabular-nums; line-height: 1; }
+  .ouv-l .t { font-size: 12.5px; color: var(--ink-2); line-height: 1.35; }
+  @media (min-width: 920px) {
+    .ouverture { grid-template-columns: minmax(0, 1fr) 280px; gap: 40px; padding: 30px 34px; }
+    .ouv-resume { border-top: none; border-left: 1px solid var(--line); padding-top: 0; padding-left: 30px; }
+  }
 
   .layout { display: grid; grid-template-columns: 1fr; gap: 0 44px; margin-top: 26px; }
   @media (min-width: 920px) {
@@ -146,9 +162,17 @@
   </header>
 
   <div class="ouverture">
-    <p><strong>Bienvenue dans ce premier numéro.</strong> Le secteur des produits forestiers non ligneux avance vite et par régions, souvent sans que l'information franchisse les frontières administratives. Le Radar existe pour ça : rassembler chaque mois ce qui se passe ailleurs qu'à côté de chez vous, avec les échéances de financement et les rendez-vous à mettre à l'agenda.</p>
+    <div class="ouv-mot"><p><strong>Bienvenue dans ce premier numéro.</strong> Le secteur des produits forestiers non ligneux avance vite et par régions, souvent sans que l'information franchisse les frontières administratives. Le Radar existe pour ça : rassembler chaque mois ce qui se passe ailleurs qu'à côté de chez vous, avec les échéances de financement et les rendez-vous à mettre à l'agenda.</p>
     <p>Septembre est un mois chargé. Trois programmes se ferment avant la fin du mois, la saison de cueillette bat son plein, et le Kamouraska vient de décrocher une certification mycologique européenne qu'aucun territoire nord-américain n'avait obtenue. Bonne lecture, et écrivez-nous ce qui se prépare chez vous.</p>
     <div class="sig">L'équipe de concertation PFNL, Groupe AGÉCO</div>
+    </div>
+      <div class="ouv-resume">
+        <div class="ouv-k">Dans ce numéro</div>
+        <div class="ouv-l"><span class="n">12</span><span class="t">programmes de financement ouverts</span></div>
+        <div class="ouv-l"><span class="n">14</span><span class="t">nouvelles des régions et de la recherche</span></div>
+        <div class="ouv-l"><span class="n">5</span><span class="t">appels à participation</span></div>
+        <div class="ouv-l"><span class="n">16</span><span class="t">rendez-vous à l'agenda</span></div>
+      </div>
   </div>
 
   <div class="layout">
