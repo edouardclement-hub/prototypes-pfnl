@@ -8,25 +8,38 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
-  body { background:#FCFCFA; color:#22291F; font-family:'Karla','Helvetica Neue',Arial,sans-serif; font-size:15px; line-height:1.6; }
-  .wrap { max-width:640px; margin:0 auto; padding:60px 22px; }
-  h1 { font-family:'Archivo',sans-serif; font-weight:800; font-size:36px; letter-spacing:-0.02em; color:#135A37; }
-  .sub { color:#5C6356; margin:10px 0 34px; max-width:52ch; }
-  a.card { display:block; background:#fff; border:1px solid #E4DFD2; border-radius:12px; padding:20px 24px; margin-bottom:12px; text-decoration:none; color:inherit; transition:border-color .12s; }
+  body { background:#FCFCFA; color:#16211A; font-family:'Archivo','Helvetica Neue',Arial,sans-serif; font-size:15px; line-height:1.6; }
+  .wrap { max-width:720px; margin:0 auto; padding:56px 24px; }
+  .beacon { width:44px; height:44px; border-radius:50%; background:#1F7A4D; position:relative; margin-bottom:16px; }
+  .beacon::after { content:''; position:absolute; inset:13px; border-radius:50%; background:#FCFCFA; }
+  .beacon::before { content:''; position:absolute; inset:6px; border-radius:50%; border:2px solid rgba(255,255,255,.55); }
+  h1 { font-weight:800; font-size:34px; letter-spacing:-0.02em; color:#135A37; }
+  .sub { color:#4E5A51; margin:10px 0 36px; max-width:56ch; }
+  .group { font-size:12px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:#4E5A51; margin:34px 0 12px; display:flex; align-items:center; gap:10px; }
+  .group::after { content:''; flex:1; height:1px; background:#E3E6E0; }
+  a.card { display:block; background:#fff; border:1px solid #E3E6E0; border-radius:12px; padding:18px 22px; margin-bottom:10px; text-decoration:none; color:inherit; transition:border-color .12s; }
   a.card:hover { border-color:#1F7A4D; }
-  .k { font-size:11px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:#B4560A; }
-  .card h2 { font-family:'Newsreader',Georgia,serif; font-size:22px; font-weight:500; margin:3px 0 4px; color:#24402E; }
-  .card p { font-size:13.5px; color:#5C6356; }
-  .note { font-size:12.5px; color:#939A8D; margin-top:30px; }
+  a.card.star { border:2px solid #1F7A4D; }
+  .k { font-size:11px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:#B4560A; }
+  .k.green { color:#1F7A4D; }
+  .card h2 { font-size:19px; font-weight:800; margin:3px 0 4px; color:#135A37; }
+  .card p { font-size:13.5px; color:#4E5A51; }
+  .note { font-size:12.5px; color:#8B958D; margin-top:34px; }
 </style>
 <div class="wrap">
+  <div class="beacon" aria-hidden="true"></div>
   <h1>Infolettre PFNL — prototypes</h1>
-  <p class="sub">Le portail (le contenant) et les variantes de numéro pour l’infolettre du secteur des produits forestiers non ligneux. Contenu de démonstration.</p>
-  <a class="card" href="portail.html"><span class="k">Commencer ici — le contenant des numéros</span><h2>Le portail — habillé en Radar</h2><p>Le site qui hébergera les numéros : navigation entre éditions, recherche dans les archives par thème et par région, soumission de nouvelles par le réseau. Maintenant aux couleurs de Radar, la variante retenue.</p></a>
+  <p class="sub">Prototypes de l’infolettre web du secteur des produits forestiers non ligneux. Direction retenue : <strong>Radar</strong>. Contenu de démonstration.</p>
+
+  <div class="group">La direction retenue</div>
+  <a class="card star" href="radar2.html"><span class="k green">Le numéro — version complète</span><h2>Radar, version complète (C2)</h2><p>La structure et le ton de Radar, avec les 8 sections de la maquette (mot d’ouverture, chiffre du mois, portrait inclus) — mise en page pleine largeur avec colonne latérale, comme une vraie page web.</p></a>
+  <a class="card star" href="portail.html"><span class="k green">Le contenant des numéros</span><h2>Le portail Radar</h2><p>Le site qui hébergera l’infolettre : navigation entre éditions, recherche dans les archives par thème et par région (onglet Explorer), soumission de nouvelles par le réseau.</p></a>
+  <a class="card" href="radar.html"><span class="k green">La version d’origine, pour référence</span><h2>Radar (C)</h2><p>Le prototype initial qui a mené au choix : orienté action, échéances et financement en tête, colonne unique.</p></a>
+
+  <div class="group">Les autres pistes explorées</div>
   <a class="card" href="bulletin.html"><span class="k">Variante A</span><h2>Le Bulletin PFNL</h2><p>Compact et scannable : l’essentiel en trois points, brèves denses par région.</p></a>
   <a class="card" href="magazine.html"><span class="k">Variante B</span><h2>Sous-bois, le magazine</h2><p>Éditorial et chaleureux : édito, chiffre du mois, portrait en vedette.</p></a>
-  <a class="card" href="radar2.html"><span class="k">Nouveau — suite aux commentaires</span><h2>Radar, version complète (C2)</h2><p>La structure et le ton de Radar, avec les 8 sections de la maquette (mot d’ouverture, chiffre du mois, portrait inclus) — et une mise en page pleine largeur avec colonne latérale, comme une vraie page web.</p></a>
-  <a class="card" href="radar.html"><span class="k">Variante C</span><h2>Radar PFNL</h2><p>Orienté action : échéances, financement et calendrier en tête.</p></a>
+
   <p class="note">Prototypes préparés pour Groupe AGÉCO · contenu fictif · non indexé par les moteurs de recherche.</p>
 </div>
 </html>
