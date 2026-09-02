@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="fr">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Radar PFNL — Nº 01, septembre 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FCFCFA; --panel: #FFFFFF; --ink: #16211A; --ink-2: #4E5A51; --ink-3: #8B958D;
+    --line: #E3E6E0; --green: #1F7A4D; --green-deep: #135A37; --green-wash: #E4F2EA;
+    --urgent: #B4560A; --urgent-wash: #FBEDDD;
+    --sans: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  a { color: var(--green-deep); font-weight: 600; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  a:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; border-radius: 2px; }
+  .proto-bar { background: var(--ink); color: #C9CFC8; font-size: 11px; font-weight: 600; text-align: center; padding: 6px 14px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 30px 28px 60px; }
+
+  .head { display: flex; align-items: center; gap: 14px; padding-bottom: 18px; border-bottom: 3px solid var(--ink); flex-wrap: wrap; }
+  .beacon { width: 46px; height: 46px; border-radius: 50%; background: var(--green); position: relative; flex-shrink: 0; }
+  .beacon::after { content: ''; position: absolute; inset: 14px; border-radius: 50%; background: #fff; }
+  .beacon::before { content: ''; position: absolute; inset: 6px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.55); }
+  .head h1 { font-size: 32px; font-weight: 800; letter-spacing: -0.02em; }
+  .head h1 span { color: var(--green); }
+  .head .meta { margin-left: auto; text-align: right; }
+  .head .meta .n { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-2); }
+  .head .meta .t { font-size: 12px; color: var(--ink-3); }
+
+  .ouverture { border-left: 4px solid var(--green); background: var(--panel); border-radius: 0 10px 10px 0; padding: 16px 22px; margin: 26px 0 6px; max-width: 76ch; }
+  .ouverture p { font-size: 15.5px; }
+  .ouverture p + p { margin-top: 10px; }
+  .ouverture .sig { font-size: 13px; color: var(--ink-3); margin-top: 10px; }
+
+  .layout { display: grid; grid-template-columns: 1fr; gap: 0 44px; margin-top: 26px; }
+  @media (min-width: 920px) {
+    .layout { grid-template-columns: minmax(0, 1fr) 350px; }
+    .side { order: 2; }
+    .main { order: 1; }
+  }
+
+  .sec { margin-bottom: 36px; }
+  .sec-head { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+  .sec-head .b { width: 12px; height: 12px; border-radius: 3px; background: var(--green); flex-shrink: 0; }
+  .sec-head h2 { font-size: 18px; font-weight: 800; letter-spacing: -0.01em; text-wrap: balance; }
+  .sec-head .cnt { margin-left: auto; font-size: 12px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+
+  .fin-scroll { overflow-x: auto; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; }
+  .fin { width: 100%; border-collapse: collapse; font-size: 13.5px; min-width: 620px; }
+  .fin th { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); text-align: left; padding: 10px 14px; border-bottom: 2px solid var(--line); }
+  .fin td { padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .fin tr:last-child td { border-bottom: none; }
+  .fin td:first-child { font-weight: 700; }
+  .fin .sub { display: block; font-weight: 400; color: var(--ink-2); font-size: 12.5px; margin-top: 2px; }
+  .tag-new { display: inline-block; font-size: 10px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; background: var(--green-wash); color: var(--green-deep); padding: 2px 7px; border-radius: 8px; margin-left: 6px; vertical-align: 2px; }
+  .ech { font-weight: 700; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .ech.soon { color: var(--urgent); }
+
+  .flash { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 6px 18px; }
+  .flash-item { display: flex; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+  .flash-item:last-child { border-bottom: none; }
+  .flash .reg { font-size: 11px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--green-deep); min-width: 132px; flex-shrink: 0; }
+  .flash .txt { font-size: 14px; }
+  .flash .txt a { font-size: 13px; white-space: nowrap; }
+  @media (max-width: 560px) { .flash-item { flex-direction: column; gap: 3px; } }
+
+  .portrait { display: flex; gap: 18px; align-items: flex-start; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 18px 20px; }
+  .portrait .avatar { width: 58px; height: 58px; border-radius: 50%; background: var(--green-deep); color: #fff; font-size: 21px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .portrait h3 { font-size: 16.5px; font-weight: 800; }
+  .portrait .role { font-size: 12px; color: var(--ink-3); }
+  .portrait p { font-size: 13.5px; color: var(--ink-2); margin-top: 6px; }
+
+  .appel-list li { margin: 0 0 9px 18px; font-size: 14.5px; }
+
+  .cal-list { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 4px 18px; }
+  .cal-row { display: flex; gap: 14px; padding: 11px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+  .cal-row:last-child { border-bottom: none; }
+  .cal-row .dt { font-size: 11.5px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; color: var(--green-deep); min-width: 118px; flex-shrink: 0; font-variant-numeric: tabular-nums; }
+  .cal-row .ev { font-size: 14px; }
+  .cal-row .ev .w { color: var(--ink-3); font-size: 13px; }
+  @media (max-width: 560px) { .cal-row { flex-direction: column; gap: 3px; } }
+
+  .side-box { margin-bottom: 28px; }
+  .side-k { font-size: 11.5px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 10px; color: var(--ink-2); display: flex; align-items: center; gap: 8px; }
+  .side-k.hot { color: var(--urgent); }
+  .dl-card { background: var(--panel); border: 1px solid var(--line); border-top: 4px solid var(--urgent); border-radius: 8px; padding: 12px 14px; margin-bottom: 9px; }
+  .dl-card .when { font-size: 12px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--urgent); font-variant-numeric: tabular-nums; }
+  .dl-card .what { font-size: 13.5px; font-weight: 600; margin-top: 3px; line-height: 1.4; }
+  .tl { list-style: none; border-left: 2px solid var(--line); margin-left: 6px; padding-left: 18px; }
+  .tl li { position: relative; padding: 2px 0 14px; }
+  .tl li::before { content: ''; position: absolute; left: -23.5px; top: 8px; width: 9px; height: 9px; border-radius: 50%; background: var(--green); border: 2px solid var(--bg); }
+  .tl .d { font-size: 11.5px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--green-deep); font-variant-numeric: tabular-nums; }
+  .tl .e { font-size: 13.5px; font-weight: 600; line-height: 1.4; }
+  .tl .w { font-size: 12px; color: var(--ink-3); }
+  .chiffre { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; text-align: center; }
+  .chiffre .big { font-size: 46px; font-weight: 800; color: var(--green); line-height: 1.05; font-variant-numeric: tabular-nums; }
+  .chiffre .txt { font-size: 12.5px; color: var(--ink-2); margin-top: 6px; }
+  .chiffre .src { font-size: 11px; color: var(--ink-3); margin-top: 8px; }
+  .chiffre .relance { font-size: 12.5px; color: var(--ink-2); margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line); text-align: left; }
+  .dl-card.sondage { border-top-color: var(--green); }
+  .dl-card.sondage .when { color: var(--green-deep); }
+  .dl-card .dl-cta { display: inline-block; margin-top: 7px; font-size: 12.5px; font-weight: 700; }
+  .side-sub { background: var(--green-wash); border: 2px dashed var(--green); border-radius: 10px; padding: 16px 18px; }
+  .side-sub h3 { font-size: 14.5px; font-weight: 800; color: var(--green-deep); }
+  .side-sub p { font-size: 12.5px; color: var(--ink-2); margin: 5px 0 10px; }
+  .side-sub .cta { display: inline-block; background: var(--green-deep); color: #fff; font-weight: 700; font-size: 13px; padding: 9px 16px; border-radius: 7px; }
+  .side-sub .cta:hover { text-decoration: none; filter: brightness(1.1); }
+
+  .foot { margin-top: 10px; padding-top: 14px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 12.5px; color: var(--ink-3); align-items: center; }
+  .foot .links { display: flex; gap: 16px; align-items: center; }
+  .btn-pdf { font-family: var(--sans); font-size: 12.5px; font-weight: 700; color: var(--ink-2); background: none; border: 1px solid var(--line); border-radius: 6px; padding: 6px 13px; cursor: pointer; }
+
+  @media print {
+    .proto-bar, .side-sub, .btn-pdf, .foot .links { display: none; }
+    body { background: #fff; font-size: 12px; }
+    .wrap { padding: 0; max-width: none; }
+    .layout { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+
+<div class="proto-bar">Épreuve du Nº 01 · contenu réel et sourcé · cinq vérifications à faire avant publication (voir la note de production)</div>
+<div class="wrap">
+
+  <header class="head">
+    <div class="beacon" aria-hidden="true"></div>
+    <h1>Radar <span>PFNL</span></h1>
+    <div class="meta">
+      <div class="n">Septembre 2026 · Nº 01</div>
+      <div class="t">Occasions, échéances et nouvelles du secteur</div>
+    </div>
+  </header>
+
+  <div class="ouverture">
+    <p><strong>Bienvenue dans ce premier numéro.</strong> Le secteur des produits forestiers non ligneux avance vite et par régions, souvent sans que l'information franchisse les frontières administratives. Le Radar existe pour ça : rassembler chaque mois ce qui se passe ailleurs qu'à côté de chez vous, avec les échéances de financement et les rendez-vous à mettre à l'agenda.</p>
+    <p>Septembre est un mois chargé. Trois programmes se ferment avant la fin du mois, la saison de cueillette bat son plein, et le Kamouraska vient de décrocher une certification mycologique européenne qu'aucun territoire nord-américain n'avait obtenue. Bonne lecture, et écrivez-nous ce qui se prépare chez vous.</p>
+    <div class="sig">L'équipe de concertation PFNL, Groupe AGÉCO</div>
+  </div>
+
+  <div class="layout">
+
+    <aside class="side">
+      <div class="side-box">
+        <div class="side-k hot">À ne pas manquer</div>
+        <div class="dl-card"><div class="when">15 septembre</div><div class="what">Échéance, Fonds municipal vert, volet Plantation d'arbres</div></div>
+        <div class="dl-card"><div class="when">16 septembre</div><div class="what">Échéance, Fonds d'initiatives nordiques</div></div>
+        <div class="dl-card"><div class="when">21 septembre</div><div class="what">Lettre d'intention, recherche en aménagement durable des forêts (MRNF)</div></div>
+        <div class="dl-card sondage"><div class="when">En cours</div><div class="what">Sondage de concertation PFNL, quinze minutes pour chiffrer le secteur</div><a class="dl-cta" href="https://survey.alchemer.com/s3/8764424/ConcertationPFNL">Répondre au sondage →</a></div>
+      </div>
+
+      <div class="side-box">
+        <div class="side-k">L'automne en un coup d'œil</div>
+        <ul class="tl">
+          <li><div class="d">11-13 et 18-20 sept.</div><div class="e">Festival des champignons forestiers</div><div class="w">Saint-Pascal, Kamouraska</div></li>
+          <li><div class="d">16-18 septembre</div><div class="e">Dialogue national sur la forêt</div><div class="w">Université Laval, Québec</div></li>
+          <li><div class="d">26 septembre</div><div class="e">Initiation à la cueillette de champignons</div><div class="w">Saint-Georges, Beauce</div></li>
+          <li><div class="d">9-12 octobre</div><div class="e">Délices d'Automne</div><div class="w">Trois-Rivières</div></li>
+          <li><div class="d">22 octobre</div><div class="e">Colloque de l'Association forestière du sud du Québec</div><div class="w">Val-des-Sources</div></li>
+          <li><div class="d">25-26 novembre</div><div class="e">3<sup>e</sup> Sommet du mycotourisme</div><div class="w">Mont-Laurier</div></li>
+        </ul>
+      </div>
+
+      <div class="side-box">
+        <div class="side-k">Le chiffre du mois</div>
+        <div class="chiffre">
+          <div class="big">52</div>
+          <div class="txt">entreprises du Kamouraska mettent le champignon forestier à leur menu, en boutique ou dans leurs produits pendant tout septembre. Un record pour le Mois du champignon.</div>
+          <div class="src">Les Saveurs du Bas-Saint-Laurent, 11 août 2026</div>
+          <div class="relance">Le portrait économique du secteur, lui, reste à faire. Vous connaissez une entreprise du milieu ? <a href="https://survey.alchemer.com/s3/8764424/ConcertationPFNL">Partagez le sondage</a>, quinze minutes suffisent.</div>
+        </div>
+      </div>
+
+      <div class="side-box">
+        <div class="side-sub">
+          <h3>Vous avez vu passer une nouvelle ?</h3>
+          <p>Soumettez le lien, il pourra apparaître dans le prochain numéro.</p>
+          <a class="cta" href="#" onclick="return false">Soumettre une nouvelle</a>
+        </div>
+      </div>
+    </aside>
+
+    <div class="main">
+
+      <section class="sec">
+        <div class="sec-head"><span class="b" style="background:var(--urgent)"></span><h2>Programmes et financement</h2><span class="cnt">11 programmes ouverts</span></div>
+        <div class="fin-scroll">
+          <table class="fin">
+            <thead>
+            <tr><th scope="col">Programme</th><th scope="col">Clientèle admissible</th><th scope="col">Échéance</th></tr>
+            </thead>
+            <tbody>
+            <tr><td>Fonds municipal vert, Plantation d'arbres<span class="tag-new">Nouveau</span><span class="sub">Fédération canadienne des municipalités. Le principal levier repéré pour une forêt nourricière ou un verger de noix nordiques.</span></td><td>Municipalités et MRC du Québec</td><td class="ech soon">15 sept. 2026</td></tr>
+            <tr><td>Fonds d'initiatives nordiques<span class="tag-new">Nouveau</span><span class="sub">Société du Plan Nord. L'édition précédente a financé trois projets PFNL, dont la recherche de FaunENord sur les champignons nordiques.</span></td><td>OBNL, coopératives, communautés autochtones, municipalités, établissements d'enseignement, au nord du 49<sup>e</sup> parallèle</td><td class="ech soon">16 sept. 2026</td></tr>
+            <tr><td>Recherche en aménagement durable des forêts<span class="tag-new">Nouveau</span><span class="sub">MRNF, 1,2 M$. Un axe « création de valeur avec les autres ressources de la forêt » ouvre la porte à un projet PFNL. Lettre d'intention en septembre, projet détaillé le 9 décembre.</span></td><td>Chercheurs universitaires et centres collégiaux de transfert de technologie</td><td class="ech soon">21 sept. 2026</td></tr>
+            <tr><td>Espèces en danger ; Lutte contre les plantes exotiques envahissantes<span class="sub">Fondation pour la biodiversité et la faune du Québec. Touche les PFNL à statut précaire et les sites de récolte envahis.</span></td><td>Organismes de conservation, propriétaires et professionnels forestiers</td><td class="ech soon">1<sup>er</sup> oct. 2026</td></tr>
+            <tr><td>Innovation bioalimentaire, volet 2<span class="sub">MAPAQ, jusqu'à 200 000 $. Adapté à un projet sur la camerise, l'argousier ou l'aronia.</span></td><td>Établissements de recherche, CCTT, entreprises, associations sectorielles</td><td class="ech soon">5 oct. 2026</td></tr>
+            <tr><td>Cinq appels PSO du CRIBIQ<span class="tag-new">Nouveau</span><span class="sub">Valorisation de la biomasse, dont l'extraction de composés à partir de champignons, d'écorces, de sève ou de petits fruits nordiques.</span></td><td>Projets collaboratifs entreprise-recherche</td><td class="ech soon">2 au 23 oct. 2026</td></tr>
+            <tr><td>Programme Alimentation Santé, volet 3<span class="sub">MAPAQ, jusqu'à 900 000 $. Pour une filière ou une table de concertation qui structure une démarche collective. Volets 1 et 2 en continu jusqu'en 2029.</span></td><td>Associations sectorielles, établissements de recherche, OBNL, firmes-conseils, coopératives</td><td class="ech soon">23 oct. 2026</td></tr>
+            <tr><td>Subventions Connexion<span class="sub">CRSH, 10 000 $ à 50 000 $. Un colloque ou une série d'ateliers de transfert vers les cueilleurs. Contrepartie de 50 % obligatoire.</span></td><td>Chercheurs, établissements postsecondaires et OBNL avec une université partenaire</td><td class="ech">2 nov. 2026</td></tr>
+            <tr><td>Hydro-Québec, mise en valeur des milieux naturels<span class="sub">Fondation pour la biodiversité et la faune du Québec.</span></td><td>Organismes de conservation et gestionnaires de territoires</td><td class="ech">1<sup>er</sup> déc. 2026</td></tr>
+            <tr><td>PAPDE, volet 2, projets structurants<span class="sub">MEIE, jusqu'à 1 M$ par année. Le meilleur véhicule pour une étude de positionnement de filière ou un plan de développement sectoriel.</span></td><td>Entreprises, OBNL, cégeps, CCTT, universités, municipalités et MRC</td><td class="ech">En continu</td></tr>
+            <tr><td>Fonds régions et ruralité, volet 2<span class="sub">Délégué aux MRC. Le fonds le plus souple pour démarrer un projet PFNL local. Il a financé la noiseraie de recherche de La Mitis.</span></td><td>Promoteurs déposant auprès de leur MRC</td><td class="ech">Selon la MRC</td></tr>
+            <tr><td>Fonds Écoleader, volet Biodiversité<span class="sub">FAQDD, enveloppe de 5,7 M$ sur trois ans. Finance un diagnostic biodiversité des pratiques de récolte en milieu naturel.</span></td><td>Entreprises, OBNL et coopératives</td><td class="ech">À confirmer</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="sec">
+        <div class="sec-head"><span class="b"></span><h2>En bref, d'une région à l'autre</h2><span class="cnt">10 nouvelles</span></div>
+        <div class="flash">
+          <div class="flash-item"><span class="reg">Kamouraska</span><span class="txt">Premier territoire d'Amérique du Nord certifié « Fungi Friendly Forest » par l'Institut mycologique européen, au terme d'une démarche entamée en 2018. <a href="https://leplacoteux.com/deja-11-ans-pour-le-festival-des-champignons-forestiers-du-kamouraska/">source</a></span></div>
+          <div class="flash-item"><span class="reg">Rivière-Ouelle</span><span class="txt">La microbrasserie La Baleine endiablée lance six bières aux PFNL avec le cueilleur Le Forestier : chanterelle, thé du Labrador, pousses d'épinette, chaga, myrique baumier. Plus de 150 000 $ investis. <a href="https://leplacoteux.com/la-baleine-endiablee-devoile-une-collection-de-six-bieres-inspirees-de-la-foret-quebecoise/">source</a></span></div>
+          <div class="flash-item"><span class="reg">Mauricie</span><span class="txt">La Filière Mauricie crée SèVE avec Aliments du Québec, un identifiant pour les restaurants qui servent des comestibles forestiers au moins six mois par année. Quatre premières tables reconnues. <a href="https://mycomauricie.com/seve-les-4-premieres-reconnaissances/">source</a></span></div>
+          <div class="flash-item"><span class="reg">Côte-Nord</span><span class="txt">La coopérative Les Norkôtières et l'Association forestière Côte-Nord ont obtenu une autorisation spéciale pour tenir une cueillette guidée de plantes littorales au parc Nature de Pointe-aux-Outardes. <a href="https://www.lemanic.ca/2026/07/19/les-norkotieres-decouvrir-les-plantes-du-littoral/">source</a></span></div>
+          <div class="flash-item"><span class="reg">Chaudière-App.</span><span class="txt">La chaleur de juillet a devancé la saison des camerises à Saint-Anselme et Saint-Séverin. Qualité au rendez-vous, pluies de juin suffisantes, jaseur d'Amérique contré par des filets. <a href="https://www.beaucemedia.ca/actualites/saison-devancee-pour-les-camerises/">source</a></span></div>
+          <div class="flash-item"><span class="reg">Lanaudière</span><span class="txt">Après treize éditions, l'Association forestière de Lanaudière passe sa formation de cueilleurs professionnels au Service aux entreprises des Samares, sous le nom de Compétences essentielles du cueilleur. <a href="https://www.aflanaudiere.org/fr/formation-specialisee-de-cueilleurs-professionnels-1">source</a></span></div>
+          <div class="flash-item"><span class="reg">Saguenay–Lac-St-Jean</span><span class="txt">Plus de trente fermes camerisières d'Alma à Saint-Félicien ouvrent leurs portes à l'autocueillette et à la dégustation, avec une gamme transformée qui va du jus à la bière. <a href="https://zoneboreale.com/blogue/a-la-recherche-de-la-meilleure-facon-de-decouvrir-la-camerise-au-saguenay-lac-saint-jean/">source</a></span></div>
+          <div class="flash-item"><span class="reg">Laurentides</span><span class="txt">La MRC des Laurentides structure sa filière forestible autour du portail Les Forestibles : fiches techniques par espèce, circuit agro-gourmand, ateliers et accompagnement d'entrepreneurs. <a href="https://lesforestibles.ca/">source</a></span></div>
+          <div class="flash-item"><span class="reg">Québec</span><span class="txt">Le débat sur l'ail des bois cultivé reprend. Interdit de vente depuis 1995, il fait l'objet d'une demande d'ouverture portée par des chercheurs, des chefs et des cueilleurs. Le ministère de l'Environnement se dit ouvert à discuter. <a href="https://www.lerefletdulac.com/nouvelles-nationales/des-citoyens-souhaitent-pouvoir-un-jour-mettre-en-marche-un-ail-des-bois-cultive/">source</a></span></div>
+          <div class="flash-item"><span class="reg">Québec</span><span class="txt">La Semaine verte consacre un reportage à la première production commerciale de morilles cultivées en sol québécois. <a href="https://ici.radio-canada.ca/info/long-format/2269415/morilles-culture-quebec-champignons-semaine-verte">source</a></span></div>
+        </div>
+      </section>
+
+      <section class="sec">
+        <div class="sec-head"><span class="b"></span><h2>Recherche, savoir-faire et innovation</h2><span class="cnt">4 nouvelles</span></div>
+        <div class="flash">
+          <div class="flash-item"><span class="reg">Lotbinière</span><span class="txt">Un inventaire mycologique mené par Mycosphaera et Nature Québec dans une vieille forêt de la Seigneurie de Lotbinière révèle 31 espèces jamais recensées au Québec, dont 8 inconnues à l'échelle mondiale. Aucun champignon ne figure encore sur la liste québécoise des espèces menacées. <a href="https://www.naturesauvage.ca/ephemere/2026/07/nouvelles-especes-de-champignons/">source</a></span></div>
+          <div class="flash-item"><span class="reg">La Mitis</span><span class="txt">Cent vingt noisetiers plantés à la ferme-école du CFP Mont-Joli–Mitis créent la noiseraie de recherche la plus nordique du Québec, avec des cultivars développés par Biopterre. Des formations spécialisées sont annoncées pour l'automne. <a href="https://mrcmitis.ca/une-noiseraie-de-recherche-et-de-demonstration-prend-racine-a-la-ferme-ecole-du-cfp-mont-joli-mitis/">source</a></span></div>
+          <div class="flash-item"><span class="reg">Trois-Rivières</span><span class="txt">L'UQTR et La Filière Mauricie ont établi des profils génétiques pour 37 espèces comestibles et 12 espèces toxiques, permettant de détecter des champignons à partir d'échantillons de sol. La truffe nordique est la prochaine cible. <a href="https://mycomauricie.com/formations-et-connaissances/decouvertes-innovations/">source</a></span></div>
+          <div class="flash-item"><span class="reg">Québec</span><span class="txt">Le ministère des Ressources naturelles et des Forêts a publié ses 36 besoins de recherche prioritaires pour 2026-2027. Aucun ne porte sur les champignons, les petits fruits ou la cueillette, alors qu'un axe sur les autres ressources de la forêt existe bel et bien. <a href="https://www.quebec.ca/agriculture-environnement-et-ressources-naturelles/forets/recherche-connaissances/appel-projets-recherche">source</a></span></div>
+        </div>
+      </section>
+
+      <section class="sec">
+        <div class="sec-head"><span class="b"></span><h2>Portrait du mois</h2><span class="cnt">en alternance</span></div>
+        <div class="portrait">
+          <div class="avatar">DR</div>
+          <div>
+            <h3>David Robert, président de l'ACPFNL</h3>
+            <div class="role">Auclair, Témiscouata, Bas-Saint-Laurent</div>
+            <p>Entrepreneur forestier, il a pris la présidence de l'Association pour la commercialisation des produits forestiers non ligneux avec un conseil d'administration largement renouvelé. Sa priorité : que le ministère des Ressources naturelles et des Forêts s'ajoute au MAPAQ comme interlocuteur du secteur, et que le plan stratégique 2025-2030 s'appuie sur des chiffres réels. <a href="https://montemiscouata.com/2026/05/19/un-vent-de-renouveau-souffle-sur-la-filiere-des-produits-forestiers-non-ligneux/">Lire l'entrevue →</a></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec">
+        <div class="sec-head"><span class="b"></span><h2>Le secteur cherche</h2><span class="cnt">5 appels ouverts</span></div>
+        <ul class="appel-list">
+          <li><strong>Répondants au sondage de concertation PFNL.</strong> Quinze minutes pour bâtir le portrait économique du secteur, qui n'existe pas encore. Quatre filières couvertes : petits fruits, champignons, plantes sauvages et noix. <a href="https://survey.alchemer.com/s3/8764424/ConcertationPFNL">Répondre</a></li>
+          <li><strong>Membres de l'ACPFNL.</strong> Campagne d'adhésion ouverte jusqu'au 1<sup>er</sup> septembre 2027, pour les cueilleurs, producteurs, transformateurs, chercheurs et partenaires institutionnels. <a href="https://acpfnl-1.s1.yapla.com/fr/accueil">S'informer</a></li>
+          <li><strong>Entreprises</strong> souhaitant former ou embaucher un cueilleur, via le programme de 720 heures de ForêtCompétences, rémunéré et en alternance. <a href="https://foretcompetences.ca/formations/programme-coud-valorisation-des-pfnl">S'informer</a></li>
+          <li><strong>Propriétaires forestiers</strong> pour le premier sondage national du genre en plus de vingt ans, mené par l'Université McGill. L'occasion de faire compter la diversification non ligneuse. <a href="https://forestowners.ca/fr/a-propos/sondage">Répondre</a></li>
+          <li><strong>Entreprises de Lanaudière</strong> pour le répertoire régional des PFNL et cultures émergentes, coordonné par le Conseil de développement bioalimentaire, l'Association forestière de Lanaudière et la SADC Matawinie. <a href="https://pfnllanaudiere.com/">S'inscrire</a></li>
+        </ul>
+      </section>
+
+      <section class="sec">
+        <div class="sec-head"><span class="b"></span><h2>Calendrier des événements</h2><span class="cnt">16 rendez-vous</span></div>
+        <div class="cal-list">
+          <div class="cal-row"><span class="dt">Tout septembre</span><span class="ev">Mois du champignon, 52 entreprises participantes <span class="w">· MRC de Kamouraska</span></span></div>
+          <div class="cal-row"><span class="dt">Samedis de sept.</span><span class="ev">Initiation à la cueillette de champignons, une sortie par samedi <span class="w">· Lac-Édouard, Mauricie</span></span></div>
+          <div class="cal-row"><span class="dt">5, 13, 19, 27 sept.</span><span class="ev">Excursions guidées de MycoBoutique, 100 $ <span class="w">· Estrie, Laurentides, Lanaudière, Montérégie</span></span></div>
+          <div class="cal-row"><span class="dt">11-13 sept.</span><span class="ev">Festival des champignons forestiers, préprogrammation gastronomique <span class="w">· Kamouraska et Saint-André</span></span></div>
+          <div class="cal-row"><span class="dt">13 septembre</span><span class="ev">Expo forestière et acéricole de Beauce, 14<sup>e</sup> édition <span class="w">· Saint-Georges</span></span></div>
+          <div class="cal-row"><span class="dt">13 et 26 sept.</span><span class="ev">Excursions du Cercle des mycologues de Lanaudière et de la Mauricie, 5 $ <span class="w">· Saint-Prosper et Saint-Narcisse</span></span></div>
+          <div class="cal-row"><span class="dt">16-18 sept.</span><span class="ev">Dialogue national sur la forêt, avec discussion préélectorale <span class="w">· Université Laval, Québec</span></span></div>
+          <div class="cal-row"><span class="dt">18-20 sept.</span><span class="ev">Festival des champignons forestiers du Kamouraska, grand public <span class="w">· Place de l'Expo, Saint-Pascal</span></span></div>
+          <div class="cal-row"><span class="dt">19 septembre</span><span class="ev">Journée forestière et acéricole du Centre-du-Québec, 10 $ <span class="w">· Saint-Pierre-Baptiste</span></span></div>
+          <div class="cal-row"><span class="dt">26 septembre</span><span class="ev">Initiation à la cueillette de champignons, Association des propriétaires de boisés de la Beauce <span class="w">· Saint-Georges</span></span></div>
+          <div class="cal-row"><span class="dt">9-12 octobre</span><span class="ev">Délices d'Automne, passeport 15 $ <span class="w">· Amphithéâtre Cogeco, Trois-Rivières</span></span></div>
+          <div class="cal-row"><span class="dt">13-15 octobre</span><span class="ev">Kiosque Les Forestibles au SIIViM <span class="w">· Mont-Tremblant</span></span></div>
+          <div class="cal-row"><span class="dt">22 octobre</span><span class="ev">Colloque « Penser biodiversité, agir en aménagement » <span class="w">· Val-des-Sources, Estrie</span></span></div>
+          <div class="cal-row"><span class="dt">24 octobre</span><span class="ev">Hygiène et salubrité alimentaires, formation obligatoire pour qui transforme et vend <span class="w">· en présence ou en ligne</span></span></div>
+          <div class="cal-row"><span class="dt">12-13 novembre</span><span class="ev">Colloque annuel de ForêtCompétences <span class="w">· Lac-Delage</span></span></div>
+          <div class="cal-row"><span class="dt">25-26 novembre</span><span class="ev">3<sup>e</sup> Sommet du mycotourisme <span class="w">· Mont-Laurier, Laurentides</span></span></div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>Radar PFNL · produit par Groupe AGÉCO, agent de concertation du secteur</span>
+    <div class="links">
+      <a href="#" onclick="return false">Numéros précédents</a>
+      <button class="btn-pdf" onclick="window.print()">Version PDF</button>
+    </div>
+  </div>
+</div>
+</html>

@@ -3,43 +3,59 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>Prototypes — Concertation PFNL</title>
+<title>Concertation PFNL</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
   body { background:#FCFCFA; color:#16211A; font-family:'Archivo','Helvetica Neue',Arial,sans-serif; font-size:15px; line-height:1.6; }
-  .wrap { max-width:720px; margin:0 auto; padding:56px 24px; }
+  .wrap { max-width:760px; margin:0 auto; padding:52px 24px 70px; }
   .beacon { width:44px; height:44px; border-radius:50%; background:#1F7A4D; position:relative; margin-bottom:16px; }
   .beacon::after { content:''; position:absolute; inset:13px; border-radius:50%; background:#FCFCFA; }
   .beacon::before { content:''; position:absolute; inset:6px; border-radius:50%; border:2px solid rgba(255,255,255,.55); }
   h1 { font-weight:800; font-size:34px; letter-spacing:-0.02em; color:#135A37; }
-  .sub { color:#4E5A51; margin:10px 0 36px; max-width:56ch; }
-  .group { font-size:12px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:#4E5A51; margin:34px 0 12px; display:flex; align-items:center; gap:10px; }
+  .sub { color:#4E5A51; margin:10px 0 40px; max-width:58ch; }
+  .group { font-size:12px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:#4E5A51; margin:0 0 14px; display:flex; align-items:center; gap:10px; }
   .group::after { content:''; flex:1; height:1px; background:#E3E6E0; }
+  .group.later { margin-top:52px; }
   a.card { display:block; background:#fff; border:1px solid #E3E6E0; border-radius:12px; padding:18px 22px; margin-bottom:10px; text-decoration:none; color:inherit; transition:border-color .12s; }
   a.card:hover { border-color:#1F7A4D; }
-  a.card.star { border:2px solid #1F7A4D; }
+  a.feature { border:2px solid #1F7A4D; padding:26px 28px; background:linear-gradient(180deg,#F4FAF6 0%,#fff 60%); }
+  a.feature h2 { font-size:26px; margin:6px 0 8px; }
+  a.feature p { font-size:14.5px; }
   .k { font-size:11px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:#B4560A; }
   .k.green { color:#1F7A4D; }
   .card h2 { font-size:19px; font-weight:800; margin:3px 0 4px; color:#135A37; }
   .card p { font-size:13.5px; color:#4E5A51; }
-  .note { font-size:12.5px; color:#8B958D; margin-top:34px; }
+  .go { display:inline-block; margin-top:12px; font-size:14px; font-weight:800; color:#135A37; }
+  .archive-note { font-size:13px; color:#8B958D; margin:-4px 0 16px; max-width:62ch; }
+  .archive a.card { background:#FAFAF8; }
+  .archive .card h2 { font-size:17px; color:#4E5A51; }
+  .note { font-size:12.5px; color:#8B958D; margin-top:38px; border-top:1px solid #E3E6E0; padding-top:16px; }
 </style>
 <div class="wrap">
   <div class="beacon" aria-hidden="true"></div>
-  <h1>Concertation PFNL — prototypes</h1>
-  <p class="sub">Prototypes du portail <strong>Concertation PFNL</strong> et de son infolettre mensuelle <strong>Radar</strong>, pour le secteur des produits forestiers non ligneux. Contenu de démonstration.</p>
+  <h1>Concertation PFNL</h1>
+  <p class="sub">Le portail du secteur des produits forestiers non ligneux au Québec, animé par Groupe AGÉCO — et son infolettre mensuelle <strong>Radar</strong>.</p>
 
-  <div class="group">La direction retenue</div>
-  <a class="card star" href="radar2.html"><span class="k green">La publication mensuelle</span><h2>Radar — l’infolettre</h2><p>La structure et le ton de Radar, avec les 8 sections de la maquette (mot d’ouverture, chiffre du mois, portrait inclus) — mise en page pleine largeur avec colonne latérale, comme une vraie page web.</p></a>
-  <a class="card star" href="portail.html"><span class="k green">Le contenant des numéros</span><h2>Le portail Concertation PFNL</h2><p>Le site qui hébergera Radar : navigation entre les numéros, recherche dans les archives par thème et par région (onglet Explorer), soumission de nouvelles par le réseau.</p></a>
-  <a class="card" href="radar.html"><span class="k green">La version d’origine, pour référence</span><h2>Radar (C)</h2><p>Le prototype initial qui a mené au choix : orienté action, échéances et financement en tête, colonne unique.</p></a>
+  <div class="group">L’infolettre</div>
+  <a class="feature card" href="radar-01.html">
+    <span class="k green">Numéro 01 · Septembre 2026</span>
+    <h2>Radar — première édition</h2>
+    <p>Actualités des régions, recherche et innovation, programmes de financement ouverts, calendrier de l’automne. Contenu réel, avec les sources d’origine.</p>
+    <span class="go">Lire le numéro →</span>
+  </a>
 
-  <div class="group">Les autres pistes explorées</div>
-  <a class="card" href="bulletin.html"><span class="k">Variante A</span><h2>Le Bulletin PFNL</h2><p>Compact et scannable : l’essentiel en trois points, brèves denses par région.</p></a>
-  <a class="card" href="magazine.html"><span class="k">Variante B</span><h2>Sous-bois, le magazine</h2><p>Éditorial et chaleureux : édito, chiffre du mois, portrait en vedette.</p></a>
+  <div class="group later">Anciens prototypes</div>
+  <p class="archive-note">Les explorations qui ont mené au format actuel. <strong>Le contenu de ces pages est fictif</strong> — elles servaient à comparer les mises en page, pas à informer.</p>
+  <div class="archive">
+    <a class="card" href="portail.html"><span class="k">Le contenant</span><h2>Maquette du portail</h2><p>Navigation entre les numéros, recherche dans les archives par thème et par région, page de soumission pour le réseau.</p></a>
+    <a class="card" href="radar2.html"><span class="k">Gabarit retenu</span><h2>Radar — gabarit complet (C2)</h2><p>Le modèle de mise en page adopté : pleine largeur, colonne latérale, les 8 sections.</p></a>
+    <a class="card" href="radar.html"><span class="k">Variante C</span><h2>Radar — proposition d’origine</h2><p>La première version, en colonne unique, qui a mené au choix du format.</p></a>
+    <a class="card" href="bulletin.html"><span class="k">Variante A</span><h2>Le Bulletin PFNL</h2><p>Compact et scannable : l’essentiel en trois points, brèves denses par région.</p></a>
+    <a class="card" href="magazine.html"><span class="k">Variante B</span><h2>Sous-bois, le magazine</h2><p>Éditorial et chaleureux : édito, chiffre du mois, portrait en vedette.</p></a>
+  </div>
 
-  <p class="note">Prototypes préparés pour Groupe AGÉCO · contenu fictif · non indexé par les moteurs de recherche.</p>
+  <p class="note">Groupe AGÉCO · agent de concertation du secteur des PFNL · pages non indexées par les moteurs de recherche.</p>
 </div>
 </html>
