@@ -3,15 +3,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>Portail Sous-bois</title>
+<title>Portail Radar PFNL</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --cream: #FAF7EF; --card: #FFFFFF; --boreal: #24402E; --boreal-deep: #182C1F;
-    --moss: #5B7A5E; --chant: #C08327; --chant-wash: #F6ECD8;
-    --ink: #22291F; --ink-2: #5C6356; --ink-3: #939A8D; --rule: #E4DFD2;
-    --serif: 'Newsreader', Georgia, serif; --sans: 'Karla', 'Helvetica Neue', Arial, sans-serif;
+    --cream: #FCFCFA; --card: #FFFFFF; --boreal: #1F7A4D; --boreal-deep: #135A37;
+    --moss: #4E5A51; --chant: #B4560A; --chant-wash: #FBEDDD;
+    --ink: #16211A; --ink-2: #4E5A51; --ink-3: #8B958D; --rule: #E3E6E0;
+    --serif: 'Archivo', 'Helvetica Neue', Arial, sans-serif; --sans: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { background: var(--cream); color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
@@ -21,8 +21,8 @@
 
   /* Nav */
   .nav { background: var(--boreal); color: #F2EFE4; position: sticky; top: 0; z-index: 20; }
-  .nav-in { max-width: 860px; margin: 0 auto; padding: 12px 22px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
-  .brand { font-family: var(--serif); font-style: italic; font-weight: 500; font-size: 24px; color: #F2EFE4; }
+  .nav-in { max-width: 1080px; margin: 0 auto; padding: 12px 22px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .brand { font-family: var(--serif); font-style: normal; font-weight: 800; font-size: 24px; color: #F2EFE4; }
   .brand:hover { color: var(--chant); }
   .brand small { font-family: var(--sans); font-style: normal; font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #A9BFA6; display: block; line-height: 1; margin-top: 2px; }
   .nav-tabs { display: flex; gap: 4px; margin-left: auto; }
@@ -31,7 +31,7 @@
   .nav-tab.active { background: rgba(255,255,255,0.14); color: #fff; }
   .nav-tab.cta { background: var(--chant); color: #241A08; }
 
-  .wrap { max-width: 680px; margin: 0 auto; padding: 30px 22px 60px; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 30px 26px 60px; }
   .view { display: none; } .view.active { display: block; }
 
   /* Sélecteur d'édition */
@@ -43,12 +43,12 @@
   /* Contenu d'édition (repris du proto B, condensé) */
   .ed-head { text-align: center; margin-bottom: 30px; }
   .ed-head .num { font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--chant); }
-  .ed-head h1 { font-family: var(--serif); font-size: 34px; font-weight: 600; margin-top: 6px; text-wrap: balance; }
+  .ed-head h1 { font-family: var(--serif); font-size: 30px; font-weight: 800; margin-top: 6px; text-wrap: balance; }
   .edito { font-family: var(--serif); font-size: 18px; line-height: 1.6; }
   .edito-sig { font-family: var(--serif); font-style: italic; color: var(--ink-2); margin-top: 10px; font-size: 14.5px; }
   .rubrique { margin-top: 38px; }
   .rub-head { display: flex; align-items: baseline; gap: 10px; border-bottom: 2px solid var(--boreal); padding-bottom: 6px; margin-bottom: 16px; }
-  .rub-head h2 { font-family: var(--serif); font-size: 22px; font-weight: 600; }
+  .rub-head h2 { font-family: var(--serif); font-size: 19px; font-weight: 800; }
   .rub-head .k { margin-left: auto; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--moss); }
   .story { margin-bottom: 18px; padding-bottom: 16px; border-bottom: 1px solid var(--rule); }
   .story:last-child { border-bottom: none; margin-bottom: 0; }
@@ -117,7 +117,7 @@
 
   /* Abonnement + footer */
   .abo { background: var(--boreal); border-radius: 12px; color: #EFF3E9; padding: 26px 28px; margin-top: 46px; text-align: center; }
-  .abo h2 { font-family: var(--serif); font-style: italic; font-weight: 500; font-size: 23px; }
+  .abo h2 { font-family: var(--serif); font-style: normal; font-weight: 800; font-size: 23px; }
   .abo p { font-size: 13px; color: #C2CFBC; margin: 6px auto 14px; max-width: 46ch; }
   .abo-row { display: flex; gap: 8px; max-width: 380px; margin: 0 auto; }
   .abo-row input { flex: 1; font-family: var(--sans); font-size: 13.5px; padding: 10px 13px; border: none; border-radius: 7px; }
@@ -134,11 +134,11 @@
   @media (max-width: 620px) { .nav-tabs { width: 100%; } .res-ed { margin-left: 0; } }
 </style>
 
-<div class="proto-bar">Prototype « portail » — le contenant des numéros (habillé ici en variante B) · contenu fictif</div>
+<div class="proto-bar">Prototype « portail » — le contenant des numéros, habillé en Radar (variante retenue) · contenu fictif</div>
 
 <nav class="nav">
   <div class="nav-in">
-    <a class="brand" href="#" onclick="show('numero');return false">Sous-bois<small>Portail PFNL du Québec</small></a>
+    <a class="brand" href="#" onclick="show('numero');return false">Radar PFNL<small>Portail du secteur — Québec</small></a>
     <div class="nav-tabs">
       <button class="nav-tab active" id="tab-numero" onclick="show('numero')">Le numéro</button>
       <button class="nav-tab" id="tab-explorer" onclick="show('explorer')">Explorer</button>
@@ -262,7 +262,7 @@
       <div class="abo-row"><input type="email" placeholder="votre@courriel.ca" aria-label="Courriel"><button onclick="aboDemo()">S'abonner</button></div>
       <div class="ok" id="abo-ok">Prototype — l'abonnement sera activé dans la version finale.</div>
     </div>
-    <div class="foot">Sous-bois est produit par Groupe AGÉCO, agent de concertation du secteur des PFNL.</div>
+    <div class="foot">Radar PFNL est produit par Groupe AGÉCO, agent de concertation du secteur des PFNL.</div>
   </section>
 
   <!-- ================= VUE EXPLORER ================= -->
