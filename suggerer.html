@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="fr">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Soumettre une information — Concertation PFNL</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FCFCFA; --panel: #FFFFFF; --ink: #16211A; --ink-2: #4E5A51; --ink-3: #8B958D;
+    --line: #E3E6E0; --green: #1F7A4D; --green-deep: #135A37; --green-wash: #E4F2EA;
+    --urgent: #B4560A;
+    --sans: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  a { color: var(--green-deep); font-weight: 600; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; border-radius: 2px; }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 30px 26px 70px; }
+
+  .head { display: flex; align-items: center; gap: 13px; padding-bottom: 16px; border-bottom: 3px solid var(--ink); }
+  .beacon { width: 40px; height: 40px; border-radius: 50%; background: var(--green); position: relative; flex-shrink: 0; }
+  .beacon::after { content: ''; position: absolute; inset: 12px; border-radius: 50%; background: var(--bg); }
+  .beacon::before { content: ''; position: absolute; inset: 5px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.55); }
+  .head .t { font-size: 21px; font-weight: 800; letter-spacing: -0.015em; }
+  .head .s { font-size: 11.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); }
+  .back { margin-left: auto; font-size: 13px; }
+
+  h1 { font-size: 28px; font-weight: 800; letter-spacing: -0.02em; margin: 30px 0 10px; text-wrap: balance; }
+  .lede { font-size: 15.5px; color: var(--ink-2); max-width: 58ch; }
+  .lede strong { color: var(--ink); }
+
+  form { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 24px 26px; margin-top: 26px; }
+  .fg { margin-bottom: 18px; }
+  .fg:last-of-type { margin-bottom: 22px; }
+  label { display: block; font-size: 13px; font-weight: 700; color: var(--ink-2); margin-bottom: 5px; }
+  label .opt { font-weight: 500; color: var(--ink-3); }
+  input, textarea { width: 100%; font-family: var(--sans); font-size: 14.5px; padding: 11px 13px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink); }
+  input:focus, textarea:focus { outline: none; border-color: var(--green); background: #fff; }
+  textarea { resize: vertical; min-height: 80px; }
+  .hint { font-size: 12.5px; color: var(--ink-3); margin-top: 5px; }
+  button.send { background: var(--green-deep); color: #fff; font-family: var(--sans); font-weight: 700; font-size: 15px; padding: 12px 26px; border: none; border-radius: 8px; cursor: pointer; }
+  button.send:hover { filter: brightness(1.12); }
+  .err { display: none; color: var(--urgent); font-size: 13.5px; font-weight: 600; margin-top: 12px; }
+
+  .after { margin-top: 34px; }
+  .after h2 { font-size: 16px; font-weight: 800; margin-bottom: 12px; }
+  .steps { list-style: none; counter-reset: s; }
+  .steps li { counter-increment: s; position: relative; padding-left: 38px; margin-bottom: 12px; font-size: 14px; color: var(--ink-2); }
+  .steps li::before { content: counter(s); position: absolute; left: 0; top: 0; width: 26px; height: 26px; border-radius: 50%; background: var(--green-wash); color: var(--green-deep); font-size: 13px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+  .alt { background: var(--green-wash); border-radius: 10px; padding: 16px 18px; margin-top: 26px; font-size: 13.5px; color: var(--ink-2); }
+  .foot { margin-top: 40px; padding-top: 16px; border-top: 1px solid var(--line); font-size: 12.5px; color: var(--ink-3); }
+</style>
+
+<div class="wrap">
+  <header class="head">
+    <div class="beacon" aria-hidden="true"></div>
+    <div>
+      <div class="t">Concertation PFNL</div>
+      <div class="s">Le portail du secteur · Québec</div>
+    </div>
+    <a class="back" href="radar-01.html">← Retour au numéro</a>
+  </header>
+
+  <h1>Soumettre une information</h1>
+  <p class="lede">Une initiative dans votre région, une formation, un appel à projets, un prix remporté, un événement à venir — <strong>même vu passer dans un groupe Facebook.</strong> Partagez l'information et elle pourra paraître dans le prochain numéro de Radar. Ça prend une minute.</p>
+
+  <form id="f" onsubmit="return envoyer(event)">
+    <div class="fg">
+      <label for="url">Lien vers l'information <span class="opt">— article, publication, page d'événement</span></label>
+      <input id="url" type="url" placeholder="https://…" required>
+      <div class="hint">Pas de lien ? Laissez le champ vide et décrivez l'information ci-dessous.</div>
+    </div>
+    <div class="fg">
+      <label for="note">De quoi s'agit-il ?</label>
+      <textarea id="note" placeholder="Quelques mots : ce dont il s'agit, la région concernée, pourquoi c'est utile au secteur."></textarea>
+    </div>
+    <div class="fg">
+      <label for="nom">Votre nom et votre organisation <span class="opt">— facultatif</span></label>
+      <input id="nom" type="text" placeholder="Pour vous remercier dans le numéro, si vous le souhaitez">
+    </div>
+    <button class="send" type="submit">Envoyer l'information</button>
+    <div class="err" id="err">Ajoutez au moins un lien ou une description avant d'envoyer.</div>
+  </form>
+
+  <div class="after">
+    <h2>Ce qui arrive ensuite</h2>
+    <ol class="steps">
+      <li>Votre information arrive à l'équipe de concertation, avec votre nom si vous l'avez donné.</li>
+      <li>Elle est validée et classée : actualité régionale, recherche, financement ou calendrier.</li>
+      <li>Si elle est retenue, elle paraît dans le numéro suivant — avec un lien vers la source d'origine.</li>
+    </ol>
+    <div class="alt">
+      Vous préférez écrire directement ? <a href="mailto:infolettre@concertationpfnl.ca?subject=Information%20pour%20Radar">infolettre@concertationpfnl.ca</a>
+    </div>
+  </div>
+
+  <div class="foot"><strong>Radar</strong> est l'infolettre mensuelle de Concertation PFNL, portail animé par Groupe AGÉCO.</div>
+</div>
+
+<script>
+  // Envoi par courriel en attendant le formulaire connecté au portail.
+  var DESTINATAIRE = 'infolettre@concertationpfnl.ca';
+  function envoyer(e) {
+    e.preventDefault();
+    var url = document.getElementById('url').value.trim();
+    var note = document.getElementById('note').value.trim();
+    var nom = document.getElementById('nom').value.trim();
+    if (!url && !note) { document.getElementById('err').style.display = 'block'; return false; }
+    var corps = '';
+    if (url) corps += 'Lien : ' + url + '\n\n';
+    if (note) corps += note + '\n\n';
+    if (nom) corps += '— ' + nom + '\n';
+    corps += '\n(Envoyé depuis la page de soumission de Concertation PFNL)';
+    window.location.href = 'mailto:' + DESTINATAIRE
+      + '?subject=' + encodeURIComponent('Information pour Radar')
+      + '&body=' + encodeURIComponent(corps);
+    return false;
+  }
+</script>
+</html>
