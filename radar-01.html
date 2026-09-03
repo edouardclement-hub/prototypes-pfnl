@@ -17,6 +17,7 @@
     --sec-rech: #1A6480;    /* bleu ardoise — la connaissance */
     --sec-appel: #8A6A1F;   /* ocre — l'invitation à participer */
     --sec-cal: #5D5091;     /* indigo — le temps qui vient */
+    --sec-portrait: #7A4560; /* prune — la chronique humaine */
     --sans: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -101,11 +102,15 @@
   .flash .txt a:hover, .appel-list a:hover { background: var(--green-deep); color: #fff; text-decoration: none; }
   @media (max-width: 560px) { .flash-item { flex-direction: column; gap: 3px; } }
 
-  .portrait { display: flex; gap: 18px; align-items: flex-start; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 18px 20px; }
-  .portrait .avatar { width: 58px; height: 58px; border-radius: 50%; background: var(--green-deep); color: #fff; font-size: 21px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .portrait h3 { font-size: 16.5px; font-weight: 800; }
-  .portrait .role { font-size: 12px; color: var(--ink-3); }
-  .portrait p { font-size: 13.5px; color: var(--ink-2); margin-top: 6px; }
+  .portrait { background: var(--panel); border: 1px solid var(--line); border-left: 4px solid var(--sec-portrait); border-radius: 0 10px 10px 0; padding: 20px 24px; }
+  .portrait .kicker { font-size: 11px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sec-portrait); }
+  .portrait h3 { font-size: 20px; font-weight: 800; letter-spacing: -0.01em; margin-top: 4px; }
+  .portrait h3 .annees { font-weight: 500; color: var(--ink-3); font-size: 16px; }
+  .portrait .fonction { font-size: 12.5px; color: var(--ink-3); margin-top: 2px; }
+  .portrait .corps { font-size: 14px; color: var(--ink-2); line-height: 1.6; margin-top: 12px; max-width: 68ch; }
+  .portrait .corps + .corps { margin-top: 10px; }
+  .portrait .corps em { font-style: italic; color: var(--ink); }
+  .portrait .note { font-size: 12.5px; color: var(--ink-3); line-height: 1.55; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); max-width: 68ch; }
 
   .appel-list li { margin: 0 0 9px 18px; font-size: 14.5px; }
 
@@ -216,6 +221,7 @@
         <div class="ouv-l"><span class="n">12</span><span class="t">programmes de financement ouverts</span></div>
         <div class="ouv-l"><span class="n">14</span><span class="t">nouvelles des régions et de la recherche</span></div>
         <div class="ouv-l"><span class="n">5</span><span class="t">appels à participation</span></div>
+        <div class="ouv-l"><span class="n">1</span><span class="t">portrait — hommage à Gérald Le Gal</span></div>
         <div class="ouv-l"><span class="n">16</span><span class="t">rendez-vous à l'agenda</span></div>
       </div>
   </div>
@@ -312,6 +318,18 @@
           <div class="flash-item"><span class="reg">La Mitis</span><span class="txt">Cent vingt noisetiers plantés à la ferme-école du CFP Mont-Joli–Mitis créent la noiseraie de recherche la plus nordique du Québec, avec des cultivars développés par Biopterre. Des formations spécialisées sont annoncées pour l'automne. <a href="https://mrcmitis.ca/une-noiseraie-de-recherche-et-de-demonstration-prend-racine-a-la-ferme-ecole-du-cfp-mont-joli-mitis/" target="_blank" rel="noopener noreferrer">source</a></span></div>
           <div class="flash-item"><span class="reg">Trois-Rivières</span><span class="txt">L'UQTR et La Filière Mauricie ont établi des profils génétiques pour 37 espèces comestibles et 12 espèces toxiques, permettant de détecter des champignons à partir d'échantillons de sol. La truffe nordique est la prochaine cible. <a href="https://mycomauricie.com/formations-et-connaissances/decouvertes-innovations/" target="_blank" rel="noopener noreferrer">source</a></span></div>
           <div class="flash-item"><span class="reg">Québec</span><span class="txt">Le ministère des Ressources naturelles et des Forêts a publié ses 36 besoins de recherche prioritaires pour 2026-2027. Aucun ne porte sur les champignons, les petits fruits ou la cueillette, alors qu'un axe sur les autres ressources de la forêt existe bel et bien. <a href="https://www.quebec.ca/agriculture-environnement-et-ressources-naturelles/forets/recherche-connaissances/appel-projets-recherche" target="_blank" rel="noopener noreferrer">source</a></span></div>
+        </div>
+      </section>
+
+      <section class="sec">
+        <div class="sec-head"><span class="b" style="background:var(--sec-portrait)"></span><h2>Portrait du mois</h2><span class="cnt">nouvelle chronique</span></div>
+        <div class="portrait">
+          <div class="kicker">Hommage posthume</div>
+          <h3>Gérald Le Gal <span class="annees">1950 – 2024</span></h3>
+          <div class="fonction">Fondateur de Gourmet Sauvage</div>
+          <p class="corps">Pour ce premier portrait du mois, l'infolettre PFNL rend hommage à Gérald Le Gal, fondateur de Gourmet Sauvage, décédé en janvier 2024. En 1993, il fonde l'une des premières entreprises québécoises dédiées à la cueillette et à la mise en valeur culinaire des plantes et champignons sauvages. Précurseur du secteur, il a formé des générations de cueilleurs professionnels et publié, avec sa fille Ariane, le livre <em>Forêt : identifier, cueillir, cuisiner</em> (2019).</p>
+          <p class="corps">Ariane et son conjoint Pascal poursuivent aujourd'hui son œuvre, portée par sa vision de reconnecter les gens à la nature. Il demeure l'un des artisans marquants de la reconnaissance de l'industrie des PFNL au Québec.</p>
+          <div class="note">Ce portrait s'inspire d'un balado réalisé par l'ACPFNL en juin 2020, dans le cadre d'une série d'entretiens avec des acteurs du secteur des PFNL. Cette chronique de l'infolettre visera tour à tour à partager un bref portrait d'un acteur de la filière PFNL, ou encore à offrir une courte réflexion sur un défi ou un enjeu du secteur.</div>
         </div>
       </section>
 
