@@ -159,9 +159,24 @@
 
   @media print {
     .proto-bar, .side-sub, .btn-pdf, .abo-band, .foot .links { display: none; }
-    body { background: #fff; font-size: 12px; }
+    body { background: #fff; font-size: 11pt; }
     .wrap { padding: 0; max-width: none; }
-    .layout { grid-template-columns: 1fr; }
+    .layout, .ouverture { grid-template-columns: 1fr; gap: 0; }
+    /* Le contenu principal avant la colonne latérale sur papier */
+    .layout .main { order: 1; }
+    .layout .side { order: 2; margin-top: 18px; }
+    .ouv-resume { border-left: none; border-top: 1px solid var(--line); padding-left: 0; padding-top: 14px; margin-top: 14px; }
+    /* Le chiffre du mois : les fonds ne s'impriment pas, on inverse pour rester lisible */
+    .chiffre { background: #fff; border: 2px solid var(--green-deep); color: var(--ink); }
+    .chiffre .big { color: var(--green-deep); }
+    .chiffre .txt, .chiffre .relance { color: var(--ink-2); }
+    .chiffre .src { color: var(--ink-3); }
+    .chiffre .relance { border-top-color: var(--line); }
+    .chiffre .relance a { color: var(--green-deep); border-bottom-color: var(--green); }
+    /* Pastilles « source » : sans fond imprimé, on garde un libellé lisible */
+    .flash .txt a, .appel-list a { background: none; color: var(--green-deep); padding: 0; border: 1px solid var(--line); padding: 1px 6px; }
+    /* Éviter les coupures au milieu d'un élément */
+    section, .flash-item, .cal-row, .dl-card, .ouverture, .chiffre, .portrait { break-inside: avoid; }
   }
   @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
 </style>
