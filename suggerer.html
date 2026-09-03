@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>Soumettre une information — Concertation PFNL</title>
+<title>Soumettre une information — La Vigie PFNL</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -58,8 +58,8 @@
   <header class="head">
     <div class="beacon" aria-hidden="true"></div>
     <div>
-      <div class="t">Concertation PFNL</div>
-      <div class="s">Le portail du secteur · Québec</div>
+      <div class="t">La Vigie <span style="color:#1F7A4D">PFNL</span></div>
+      <div class="s">L'infolettre du secteur · Québec</div>
     </div>
     <a class="back" href="radar-01.html">← Retour au numéro</a>
   </header>
@@ -113,7 +113,7 @@
     if (url) corps += 'Lien : ' + url + '\n\n';
     if (note) corps += note + '\n\n';
     if (nom) corps += '— ' + nom + '\n';
-    corps += '\n(Envoyé depuis la page de soumission de Concertation PFNL)';
+    corps += '\n(Envoyé depuis la page de soumission de La Vigie PFNL)';
     window.location.href = 'mailto:' + DESTINATAIRE
       + '?subject=' + encodeURIComponent('Information pour La Vigie PFNL')
       + '&body=' + encodeURIComponent(corps);
