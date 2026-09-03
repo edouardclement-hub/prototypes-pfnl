@@ -109,10 +109,10 @@
   .portrait h3 { font-size: 20px; font-weight: 800; letter-spacing: -0.01em; margin-top: 4px; }
   .portrait h3 .annees { font-weight: 500; color: var(--ink-3); font-size: 16px; }
   .portrait .fonction { font-size: 12.5px; color: var(--ink-3); margin-top: 2px; }
-  .portrait .corps { font-size: 14px; color: var(--ink-2); line-height: 1.6; margin-top: 12px; max-width: 68ch; }
+  .portrait .corps { font-size: 14px; color: var(--ink-2); line-height: 1.6; margin-top: 12px; }
   .portrait .corps + .corps { margin-top: 10px; }
   .portrait .corps em { font-style: italic; color: var(--ink); }
-  .portrait .note { font-size: 12.5px; color: var(--ink-3); line-height: 1.55; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); max-width: 68ch; }
+  .portrait .note { font-size: 12.5px; color: var(--ink-3); line-height: 1.55; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); }
 
   .appel-list li { margin: 0 0 9px 18px; font-size: 14.5px; }
 
@@ -196,7 +196,10 @@
     /* Pastilles « source » : sans fond imprimé, on garde un libellé lisible */
     .flash .txt a, .appel-list a { background: none; color: var(--green-deep); padding: 0; border: 1px solid var(--line); padding: 1px 6px; }
     /* Éviter les coupures au milieu d'un élément */
-    section, .flash-item, .cal-row, .dl-card, .ouverture, .chiffre, .portrait { break-inside: avoid; }
+    /* Garder groupés les éléments courts, mais laisser les longues sections
+       se répartir sur plusieurs pages plutôt que d'en sauter une entière. */
+    .flash-item, .cal-row, .dl-card, .chiffre, .portrait, .side-box, tr { break-inside: avoid; }
+    .sec-head, .side-k { break-after: avoid; }
   }
   @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
 </style>
