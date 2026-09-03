@@ -18,7 +18,8 @@
   a { color: var(--green-deep); font-weight: 600; text-decoration: none; }
   a:hover { text-decoration: underline; }
   a:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; border-radius: 2px; }
-  .proto-bar { background: var(--ink); color: #C9CFC8; font-size: 11px; font-weight: 600; text-align: center; padding: 6px 14px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .proto-bar { background: var(--urgent); color: #fff; font-size: 12.5px; font-weight: 600; text-align: center; padding: 10px 16px; letter-spacing: 0.02em; display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; }
+  .proto-bar strong { background: #fff; color: var(--urgent); font-weight: 800; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; padding: 3px 11px; border-radius: 4px; }
   .wrap { max-width: 1180px; margin: 0 auto; padding: 30px 28px 60px; }
 
   .head { display: flex; align-items: center; gap: 14px; padding-bottom: 18px; border-bottom: 3px solid var(--ink); flex-wrap: wrap; }
@@ -160,7 +161,10 @@
   .btn-pdf { font-family: var(--sans); font-size: 12.5px; font-weight: 700; color: var(--ink-2); background: none; border: 1px solid var(--line); border-radius: 6px; padding: 6px 13px; cursor: pointer; }
 
   @media print {
-    .proto-bar, .side-sub, .btn-pdf, .abo-band, .foot .links { display: none; }
+    .side-sub, .btn-pdf, .abo-band, .foot .links { display: none; }
+    /* Une épreuve imprimée doit rester identifiable comme telle */
+    .proto-bar { background: #fff; color: var(--urgent); border: 2px solid var(--urgent); border-radius: 6px; margin-bottom: 14px; padding: 8px 12px; }
+    .proto-bar strong { background: none; color: var(--urgent); border: 1px solid var(--urgent); }
     body { background: #fff; font-size: 11pt; }
     .wrap { padding: 0; max-width: none; }
     .layout, .ouverture { grid-template-columns: 1fr; gap: 0; }
@@ -184,7 +188,7 @@
   @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
 </style>
 
-<div class="proto-bar">Épreuve du Nº 01 — pour révision · contenu réel et sourcé · les éléments marqués « à confirmer » restent à valider avant publication</div>
+<div class="proto-bar"><strong>Épreuve</strong><span>Nº 01, pour révision — contenu réel et sourcé ; les éléments marqués « à confirmer » restent à valider avant publication.</span></div>
 <div class="wrap">
 
   <header class="head">
