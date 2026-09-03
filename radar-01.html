@@ -11,6 +11,12 @@
     --bg: #FCFCFA; --panel: #FFFFFF; --ink: #16211A; --ink-2: #4E5A51; --ink-3: #8B958D;
     --line: #E3E6E0; --green: #1F7A4D; --green-deep: #135A37; --green-wash: #E4F2EA;
     --urgent: #B4560A; --urgent-wash: #FBEDDD;
+    /* Repères de section : une couleur par rubrique, sourdes et harmonisées */
+    --sec-actu: #1F7A4D;    /* vert forêt — le cœur du numéro */
+    --sec-fin: #B4560A;     /* orange brûlé — l'argent et les échéances */
+    --sec-rech: #1A6480;    /* bleu ardoise — la connaissance */
+    --sec-appel: #8A6A1F;   /* ocre — l'invitation à participer */
+    --sec-cal: #5D5091;     /* indigo — le temps qui vient */
     --sans: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -259,7 +265,7 @@
     <div class="main">
 
       <section class="sec">
-        <div class="sec-head"><span class="b" style="background:var(--urgent)"></span><h2>Programmes et financement</h2><span class="cnt">12 programmes ouverts</span></div>
+        <div class="sec-head"><span class="b" style="background:var(--sec-fin)"></span><h2>Programmes et financement</h2><span class="cnt">12 programmes ouverts</span></div>
         <div class="fin-scroll">
           <table class="fin">
             <thead>
@@ -284,7 +290,7 @@
       </section>
 
       <section class="sec">
-        <div class="sec-head"><span class="b"></span><h2>En bref, d'une région à l'autre</h2><span class="cnt">10 nouvelles</span></div>
+        <div class="sec-head"><span class="b" style="background:var(--sec-actu)"></span><h2>En bref, d'une région à l'autre</h2><span class="cnt">10 nouvelles</span></div>
         <div class="flash">
           <div class="flash-item"><span class="reg">Kamouraska</span><span class="txt">Premier territoire d'Amérique du Nord certifié « Fungi Friendly Forest » par l'Institut mycologique européen, au terme d'une démarche entamée en 2018. <a href="https://leplacoteux.com/deja-11-ans-pour-le-festival-des-champignons-forestiers-du-kamouraska/" target="_blank" rel="noopener noreferrer">source</a></span></div>
           <div class="flash-item"><span class="reg">Rivière-Ouelle</span><span class="txt">La microbrasserie La Baleine endiablée lance six bières aux PFNL avec le cueilleur Le Forestier : chanterelle, thé du Labrador, pousses d'épinette, chaga, myrique baumier. Plus de 150 000 $ investis. <a href="https://leplacoteux.com/la-baleine-endiablee-devoile-une-collection-de-six-bieres-inspirees-de-la-foret-quebecoise/" target="_blank" rel="noopener noreferrer">source</a></span></div>
@@ -300,7 +306,7 @@
       </section>
 
       <section class="sec">
-        <div class="sec-head"><span class="b"></span><h2>Recherche, savoir-faire et innovation</h2><span class="cnt">4 nouvelles</span></div>
+        <div class="sec-head"><span class="b" style="background:var(--sec-rech)"></span><h2>Recherche, savoir-faire et innovation</h2><span class="cnt">4 nouvelles</span></div>
         <div class="flash">
           <div class="flash-item"><span class="reg">Lotbinière</span><span class="txt">Un inventaire mycologique mené par Mycosphaera et Nature Québec dans une vieille forêt de la Seigneurie de Lotbinière révèle 31 espèces jamais recensées au Québec, dont 8 inconnues à l'échelle mondiale. Aucun champignon ne figure encore sur la liste québécoise des espèces menacées. <a href="https://www.naturesauvage.ca/ephemere/2026/07/nouvelles-especes-de-champignons/" target="_blank" rel="noopener noreferrer">source</a></span></div>
           <div class="flash-item"><span class="reg">La Mitis</span><span class="txt">Cent vingt noisetiers plantés à la ferme-école du CFP Mont-Joli–Mitis créent la noiseraie de recherche la plus nordique du Québec, avec des cultivars développés par Biopterre. Des formations spécialisées sont annoncées pour l'automne. <a href="https://mrcmitis.ca/une-noiseraie-de-recherche-et-de-demonstration-prend-racine-a-la-ferme-ecole-du-cfp-mont-joli-mitis/" target="_blank" rel="noopener noreferrer">source</a></span></div>
@@ -310,7 +316,7 @@
       </section>
 
       <section class="sec">
-        <div class="sec-head"><span class="b"></span><h2>Le secteur cherche</h2><span class="cnt">5 appels ouverts</span></div>
+        <div class="sec-head"><span class="b" style="background:var(--sec-appel)"></span><h2>Le secteur cherche</h2><span class="cnt">5 appels ouverts</span></div>
         <ul class="appel-list">
           <li><strong>Répondants au sondage de concertation PFNL.</strong> Quinze minutes pour bâtir le portrait économique du secteur, qui n'existe pas encore. Quatre filières couvertes : petits fruits, champignons, plantes sauvages et noix. <a href="https://survey.alchemer.com/s3/8764424/ConcertationPFNL" target="_blank" rel="noopener noreferrer">Répondre</a></li>
           <li><strong>Membres de l'ACPFNL.</strong> Campagne d'adhésion ouverte jusqu'au 1<sup>er</sup> septembre 2027, pour les cueilleurs, producteurs, transformateurs, chercheurs et partenaires institutionnels. <a href="https://acpfnl-1.s1.yapla.com/fr/accueil" target="_blank" rel="noopener noreferrer">S'informer</a></li>
@@ -321,7 +327,7 @@
       </section>
 
       <section class="sec">
-        <div class="sec-head"><span class="b"></span><h2>Calendrier des événements</h2><span class="cnt">16 rendez-vous</span></div>
+        <div class="sec-head"><span class="b" style="background:var(--sec-cal)"></span><h2>Calendrier des événements</h2><span class="cnt">16 rendez-vous</span></div>
         <div class="cal-list">
           <div class="cal-row"><span class="dt">Tout septembre</span><span class="ev"><a href="https://mycokamouraska.com/" target="_blank" rel="noopener noreferrer">Mois du champignon, 52 entreprises participantes</a> <span class="w">· MRC de Kamouraska</span></span></div>
           <div class="cal-row"><span class="dt">Samedis de sept.</span><span class="ev"><a href="https://mycomauricie.com/activites-et-evenements" target="_blank" rel="noopener noreferrer">Initiation à la cueillette de champignons, une sortie par samedi</a> <span class="w">· Lac-Édouard, Mauricie</span></span></div>
