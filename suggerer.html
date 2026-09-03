@@ -65,7 +65,7 @@
   </header>
 
   <h1>Soumettre une information</h1>
-  <p class="lede">Une initiative dans votre région, une formation, un appel à projets, un prix remporté, un événement à venir — <strong>même vu passer dans un groupe Facebook.</strong> Partagez l'information et elle pourra paraître dans le prochain numéro de Radar. Ça prend une minute.</p>
+  <p class="lede">Une initiative dans votre région, une formation, un appel à projets, un prix remporté, un événement à venir — <strong>même vu passer dans un groupe Facebook.</strong> Partagez l'information et elle pourra paraître dans le prochain numéro de La Vigie. Ça prend une minute.</p>
 
   <form id="f" onsubmit="return envoyer(event)">
     <div class="fg">
@@ -93,11 +93,11 @@
       <li>Si elle est retenue, elle paraît dans le numéro suivant — avec un lien vers la source d'origine.</li>
     </ol>
     <div class="alt">
-      Vous préférez écrire directement ? <a href="mailto:infolettre_pfnl@groupeageco.ca?subject=Information%20pour%20Radar">infolettre_pfnl@groupeageco.ca</a>
+      Vous préférez écrire directement ? <a href="mailto:infolettre_pfnl@groupeageco.ca?subject=Information%20pour%20La%20Vigie%20PFNL">infolettre_pfnl@groupeageco.ca</a>
     </div>
   </div>
 
-  <div class="foot"><strong>Radar</strong> est l'infolettre de la concertation du secteur des PFNL au Québec.</div>
+  <div class="foot"><strong>La Vigie PFNL</strong> est l'infolettre de la concertation du secteur des PFNL au Québec.</div>
 </div>
 
 <script>
@@ -115,7 +115,7 @@
     if (nom) corps += '— ' + nom + '\n';
     corps += '\n(Envoyé depuis la page de soumission de Concertation PFNL)';
     window.location.href = 'mailto:' + DESTINATAIRE
-      + '?subject=' + encodeURIComponent('Information pour Radar')
+      + '?subject=' + encodeURIComponent('Information pour La Vigie PFNL')
       + '&body=' + encodeURIComponent(corps);
     return false;
   }
