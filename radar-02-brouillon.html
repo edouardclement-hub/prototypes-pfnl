@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="noindex" name="robots"/>
+<title>La Vigie PFNL — Nº 02, octobre 2026 (BROUILLON)</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg: #FCFCFA; --panel: #FFFFFF; --ink: #16211A; --ink-2: #4E5A51; --ink-3: #8B958D;
+    --line: #E3E6E0; --green: #1F7A4D; --green-deep: #135A37; --green-wash: #E4F2EA;
+    --urgent: #B4560A; --urgent-wash: #FBEDDD;
+    /* Repères de section : une couleur par rubrique, sourdes et harmonisées */
+    --sec-actu: #1F7A4D;    /* vert forêt — le cœur du numéro */
+    --sec-fin: #B4560A;     /* orange brûlé — l'argent et les échéances */
+    --sec-rech: #1A6480;    /* bleu ardoise — la connaissance */
+    --sec-appel: #8A6A1F;   /* ocre — l'invitation à participer */
+    --sec-cal: #5D5091;     /* indigo — le temps qui vient */
+    --sec-portrait: #7A4560; /* prune — la chronique humaine */
+    --sans: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  a { color: var(--green-deep); font-weight: 600; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  a:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; border-radius: 2px; }
+  .proto-bar { background: var(--urgent); color: #fff; font-size: 12.5px; font-weight: 600; text-align: center; padding: 10px 16px; letter-spacing: 0.02em; display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; }
+  .proto-bar strong { background: #fff; color: var(--urgent); font-weight: 800; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; padding: 3px 11px; border-radius: 4px; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 30px 28px 60px; }
+
+  .head { display: flex; align-items: center; gap: 14px; padding-bottom: 18px; border-bottom: 3px solid var(--ink); flex-wrap: wrap; }
+  .beacon { width: 46px; height: 46px; border-radius: 50%; background: var(--green); position: relative; flex-shrink: 0; }
+  .beacon::after { content: ''; position: absolute; inset: 14px; border-radius: 50%; background: #fff; }
+  .beacon::before { content: ''; position: absolute; inset: 6px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.55); }
+  .head h1 { font-size: 32px; font-weight: 800; letter-spacing: -0.02em; }
+  .head h1 span { color: var(--green); }
+  .head .meta { margin-left: auto; text-align: right; }
+  .head .meta .n { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-2); }
+  .head .meta .t { font-size: 12px; color: var(--ink-3); }
+
+  .ouverture {
+    display: grid; grid-template-columns: 1fr; gap: 22px;
+    border: 1px solid var(--line); border-left: 5px solid var(--green);
+    background: var(--panel); border-radius: 0 12px 12px 0;
+    padding: 26px 30px; margin: 28px 0 6px;
+  }
+  .ouverture p { font-size: 15.5px; max-width: 66ch; }
+  .ouverture p:first-child { font-size: 17px; line-height: 1.5; }
+  .ouverture p + p { margin-top: 12px; }
+  .ouverture .sig { font-size: 12.5px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-3); margin-top: 16px; }
+  .ouv-resume { border-top: 1px solid var(--line); padding-top: 18px; }
+  .ouv-k { font-size: 11px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 10px; }
+  .ouv-l { display: flex; align-items: baseline; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--line); }
+  .ouv-l:last-child { border-bottom: none; padding-bottom: 0; }
+  .ouv-l .n { font-size: 23px; font-weight: 800; color: var(--green); min-width: 32px; font-variant-numeric: tabular-nums; line-height: 1; }
+  .ouv-l .t { font-size: 12.5px; color: var(--ink-2); line-height: 1.35; }
+  @media (min-width: 920px) {
+    .ouverture { grid-template-columns: minmax(0, 1fr) 280px; gap: 40px; padding: 30px 34px; }
+    .ouv-resume { border-top: none; border-left: 1px solid var(--line); padding-top: 0; padding-left: 30px; }
+  }
+
+  .layout { display: grid; grid-template-columns: 1fr; gap: 0 44px; margin-top: 26px; }
+  @media (min-width: 920px) {
+    .layout { grid-template-columns: minmax(0, 1fr) 350px; }
+    .side { order: 2; }
+    .main { order: 1; }
+  }
+
+  .sec { margin-bottom: 36px; }
+  .sec-head { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+  .sec-head .b { width: 12px; height: 12px; border-radius: 3px; background: var(--green); flex-shrink: 0; }
+  .sec-head h2 { font-size: 18px; font-weight: 800; letter-spacing: -0.01em; text-wrap: balance; }
+  .sec-head .cnt { margin-left: auto; font-size: 12px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+
+  .fin-scroll { overflow-x: auto; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; }
+  .fin { width: 100%; border-collapse: collapse; font-size: 13.5px; min-width: 620px; }
+  .fin th { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); text-align: left; padding: 10px 14px; border-bottom: 2px solid var(--line); }
+  .fin td { padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .fin tr:last-child td { border-bottom: none; }
+  .fin td:first-child { font-weight: 700; }
+  .fin td a, .cal-row .ev a, .tl .e a, .dl-card .what a { color: inherit; text-decoration: none; border-bottom: 1px solid rgba(31,122,77,.35); }
+  .fin td a:hover, .cal-row .ev a:hover, .tl .e a:hover, .dl-card .what a:hover { color: var(--green-deep); border-bottom-color: var(--green); }
+  .fin .sub { display: block; font-weight: 400; color: var(--ink-2); font-size: 12.5px; margin-top: 2px; }
+  .tag-new { display: inline-block; font-size: 10px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; background: var(--green-wash); color: var(--green-deep); padding: 2px 7px; border-radius: 8px; margin-left: 6px; vertical-align: 2px; }
+  .ech { font-weight: 700; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .ech.detail { white-space: normal; font-weight: 600; font-size: 12.5px; line-height: 1.45; min-width: 150px; }
+  .ech.soon { color: var(--urgent); }
+
+  .flash { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 6px 18px; }
+  .flash-item { display: flex; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+  .flash-item:last-child { border-bottom: none; }
+  .flash .reg { font-size: 11px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--green-deep); min-width: 132px; flex-shrink: 0; }
+  .flash .txt { font-size: 14px; }
+  .flash .txt a, .appel-list a {
+    display: inline-flex; align-items: center; gap: 4px; vertical-align: 1px;
+    font-size: 10.5px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--green-deep); background: var(--green-wash);
+    padding: 3px 10px; border-radius: 20px; white-space: nowrap;
+    text-decoration: none; transition: background 0.12s, color 0.12s;
+  }
+  .flash .txt a::after, .appel-list a::after { content: '\2197'; font-size: 11px; font-weight: 700; }
+  .flash .txt a:hover, .appel-list a:hover { background: var(--green-deep); color: #fff; text-decoration: none; }
+  @media (max-width: 560px) { .flash-item { flex-direction: column; gap: 3px; } }
+
+  .portrait { background: var(--panel); border: 1px solid var(--line); border-left: 4px solid var(--sec-portrait); border-radius: 0 10px 10px 0; padding: 20px 24px; }
+  .portrait .kicker { font-size: 11px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sec-portrait); }
+  .portrait h3 { font-size: 20px; font-weight: 800; letter-spacing: -0.01em; margin-top: 4px; }
+  .portrait h3 .annees { font-weight: 500; color: var(--ink-3); font-size: 16px; }
+  .portrait .fonction { font-size: 12.5px; color: var(--ink-3); margin-top: 2px; }
+  .portrait .corps { font-size: 14px; color: var(--ink-2); line-height: 1.6; margin-top: 12px; }
+  .portrait .corps + .corps { margin-top: 10px; }
+  .portrait .corps em { font-style: italic; color: var(--ink); }
+  .portrait .note { font-size: 12.5px; color: var(--ink-3); line-height: 1.55; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); }
+
+  .appel-list li { margin: 0 0 9px 18px; font-size: 14.5px; }
+
+  .cal-list { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 4px 18px; }
+  .cal-row { display: flex; gap: 14px; padding: 11px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+  .cal-row:last-child { border-bottom: none; }
+  .cal-row .dt { font-size: 11.5px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; color: var(--green-deep); min-width: 118px; flex-shrink: 0; font-variant-numeric: tabular-nums; }
+  .cal-row .ev { font-size: 14px; }
+  .cal-row .ev .w { color: var(--ink-3); font-size: 13px; }
+  @media (max-width: 560px) { .cal-row { flex-direction: column; gap: 3px; } }
+
+  .side-box { margin-bottom: 28px; }
+  .side-k { font-size: 11.5px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 10px; color: var(--ink-2); display: flex; align-items: center; gap: 8px; }
+  .side-k.hot { color: var(--urgent); }
+  .dl-card { background: var(--panel); border: 1px solid var(--line); border-top: 4px solid var(--urgent); border-radius: 8px; padding: 12px 14px; margin-bottom: 9px; }
+  .dl-card .when { font-size: 12px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--urgent); font-variant-numeric: tabular-nums; }
+  .dl-card .what { font-size: 13.5px; font-weight: 600; margin-top: 3px; line-height: 1.4; }
+  .tl { list-style: none; border-left: 2px solid var(--line); margin-left: 6px; padding-left: 18px; }
+  .tl li { position: relative; padding: 2px 0 14px; }
+  .tl li::before { content: ''; position: absolute; left: -23.5px; top: 8px; width: 9px; height: 9px; border-radius: 50%; background: var(--green); border: 2px solid var(--bg); }
+  .tl .d { font-size: 11.5px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--green-deep); font-variant-numeric: tabular-nums; }
+  .tl .e { font-size: 13.5px; font-weight: 600; line-height: 1.4; }
+  .tl .w { font-size: 12px; color: var(--ink-3); }
+  .chiffre { background: var(--green-deep); border: none; border-radius: 12px; padding: 26px 24px 22px; text-align: center; color: #fff; }
+  .chiffre .big { font-size: 72px; font-weight: 800; color: #fff; line-height: 0.9; letter-spacing: -0.045em; font-variant-numeric: tabular-nums; }
+  .chiffre .txt { font-size: 13.5px; line-height: 1.5; color: #D8E8DE; margin-top: 12px; }
+  .chiffre .src { font-size: 11px; color: #8FB69F; margin-top: 12px; }
+  .chiffre .src a { color: #B7D3C2; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,0.28); }
+  .chiffre .src a:hover { color: #fff; border-bottom-color: #fff; text-decoration: none; }
+  .chiffre .relance { font-size: 12.5px; line-height: 1.5; color: #C3DACD; margin-top: 18px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.16); text-align: left; }
+  .chiffre .relance a { color: #fff; font-weight: 700; border-bottom: 1px solid rgba(255,255,255,0.5); }
+  .chiffre .relance a:hover { color: #fff; border-bottom-color: #fff; text-decoration: none; }
+  .dl-card.sondage { border-top-color: var(--green); }
+  .dl-card.sondage .when { color: var(--green-deep); }
+  .dl-card .dl-cta { display: inline-block; margin-top: 7px; font-size: 12.5px; font-weight: 700; }
+  .side-sub { background: var(--green-wash); border: 2px dashed var(--green); border-radius: 10px; padding: 16px 18px; }
+  .side-sub h3 { font-size: 14.5px; font-weight: 800; color: var(--green-deep); }
+  .side-sub p { font-size: 12.5px; color: var(--ink-2); margin: 5px 0 10px; }
+  .side-sub .cta { display: inline-block; background: var(--green-deep); color: #fff; font-weight: 700; font-size: 13px; padding: 9px 16px; border-radius: 7px; }
+  .side-sub .cta:hover { text-decoration: none; filter: brightness(1.1); }
+
+  .abo-band {
+    background: var(--green-deep); color: #fff; border-radius: 12px;
+    padding: 26px 32px; margin-top: 38px;
+    display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+  }
+  .abo-band h3 { font-size: 20px; font-weight: 800; letter-spacing: -0.01em; }
+  .abo-band p { font-size: 13.5px; color: #B9D4C3; margin-top: 5px; max-width: 54ch; }
+  .abo-band .cta {
+    background: #fff; color: var(--green-deep); font-weight: 800; font-size: 14.5px;
+    padding: 13px 26px; border-radius: 8px; white-space: nowrap; text-decoration: none;
+  }
+  .abo-band .cta:hover { text-decoration: none; background: #EAF3ED; }
+  .foot { margin-top: 26px; padding-top: 14px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 12.5px; color: var(--ink-3); align-items: flex-start; }
+  .foot-legal { margin-top: 5px; }
+  .foot-legal a { color: var(--ink-2); font-weight: 700; border-bottom: 1px solid rgba(31,122,77,.4); }
+  .foot-legal a:hover { color: var(--green-deep); text-decoration: none; }
+  .foot .links { display: flex; gap: 16px; align-items: center; }
+  .btn-pdf { font-family: var(--sans); font-size: 12.5px; font-weight: 700; color: var(--ink-2); background: none; border: 1px solid var(--line); border-radius: 6px; padding: 6px 13px; cursor: pointer; }
+
+  @media print {
+    .side-sub, .btn-pdf, .abo-band, .foot .links { display: none; }
+    /* Une épreuve imprimée doit rester identifiable comme telle */
+    .proto-bar { background: #fff; color: var(--urgent); border: 2px solid var(--urgent); border-radius: 6px; margin-bottom: 14px; padding: 8px 12px; }
+    .proto-bar strong { background: none; color: var(--urgent); border: 1px solid var(--urgent); }
+    body { background: #fff; font-size: 11pt; }
+    .wrap { padding: 0; max-width: none; }
+    .layout, .ouverture { grid-template-columns: 1fr; gap: 0; }
+    /* Le contenu principal avant la colonne latérale sur papier */
+    .layout .main { order: 1; }
+    .layout .side { order: 2; margin-top: 18px; }
+    .ouv-resume { border-left: none; border-top: 1px solid var(--line); padding-left: 0; padding-top: 14px; margin-top: 14px; }
+    /* Le chiffre du mois : les fonds ne s'impriment pas, on inverse pour rester lisible */
+    .chiffre { background: #fff; border: 2px solid var(--green-deep); color: var(--ink); }
+    .chiffre .big { color: var(--green-deep); }
+    .chiffre .txt, .chiffre .relance { color: var(--ink-2); }
+    .chiffre .src { color: var(--ink-3); }
+    .chiffre .src a { color: var(--green-deep); border-bottom-color: var(--line); }
+    .chiffre .relance { border-top-color: var(--line); }
+    .chiffre .relance a { color: var(--green-deep); border-bottom-color: var(--green); }
+    /* Pastilles « source » : sans fond imprimé, on garde un libellé lisible */
+    .flash .txt a, .appel-list a { background: none; color: var(--green-deep); padding: 0; border: 1px solid var(--line); padding: 1px 6px; }
+    /* Éviter les coupures au milieu d'un élément */
+    /* Garder groupés les éléments courts, mais laisser les longues sections
+       se répartir sur plusieurs pages plutôt que d'en sauter une entière. */
+    .flash-item, .cal-row, .dl-card, .chiffre, .portrait, .side-box, tr { break-inside: avoid; }
+    .sec-head, .side-k { break-after: avoid; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+
+  .placeholder { border: 2px dashed var(--line); border-radius: 10px; padding: 22px 20px; text-align: center; color: var(--ink-3); font-size: 13px; font-style: italic; background: var(--bg); }
+</style>
+<div class="proto-bar"><strong>Épreuve</strong><span>Nº 02, brouillon de travail — programmes et calendrier mis à jour ; actualités, recherche, portrait et chiffre du mois en attente de contenu.</span></div>
+<div class="wrap">
+<header class="head">
+<div aria-hidden="true" class="beacon"></div>
+<h1>La Vigie <span>PFNL</span></h1>
+<div class="meta">
+<div class="n">Octobre 2026 · Nº 02</div>
+<div class="t">L'infolettre du secteur des PFNL</div>
+</div>
+</header>
+<div class="ouverture">
+<div class="ouv-mot"><p><strong>[BROUILLON — à réviser] </strong> Le mot d'ouverture d'octobre reste à écrire, une fois le contenu du numéro assemblé.</p>
+
+<div class="sig">L'équipe de la concertation du secteur des PFNL au Québec</div>
+</div>
+<div class="ouv-resume">
+<div class="ouv-k">Dans ce numéro</div>
+<div class="ouv-l"><span class="n">7</span><span class="t">programmes de financement ouverts</span></div>
+<div class="ouv-l"><span class="n">à compléter</span><span class="t">nouvelles des régions et de la recherche</span></div>
+<div class="ouv-l"><span class="n">4</span><span class="t">appels à participation</span></div>
+<div class="ouv-l"><span class="n">à compléter</span><span class="t">portrait ou réflexion du mois</span></div>
+<div class="ouv-l"><span class="n">12</span><span class="t">rendez-vous à l'agenda</span></div>
+</div>
+</div>
+<div class="layout">
+<aside class="side">
+<div class="side-box">
+<div class="side-k hot">À ne pas manquer</div>
+<div class="dl-card"><div class="when">1er décembre</div><div class="what"><a href="https://www.fbfq.ca/programme/hydro-quebec-pour-la-mise-en-valeur-des-milieux-naturels/" rel="noopener noreferrer" target="_blank">Échéance, Hydro-Québec — mise en valeur des milieux naturels</a></div></div>
+<div class="dl-card"><div class="when">2 novembre</div><div class="what"><a href="https://sshrc-crsh.canada.ca/fr/financement/occasions/subventions-connexion/2026/concours.aspx" rel="noopener noreferrer" target="_blank">Échéance, Subventions Connexion (CRSH)</a></div></div>
+<div class="dl-card"><div class="when">23 octobre</div><div class="what"><a href="https://www.quebec.ca/entreprises-et-travailleurs-autonomes/industrie-manufacturiere/programmes-aide-financiere/programme-alimentation-sante" rel="noopener noreferrer" target="_blank">Échéance, Programme Alimentation Santé, volet 3 (MAPAQ)</a></div></div>
+<div class="dl-card sondage"><div class="when">En cours</div><div class="what">Sondage de concertation PFNL, quinze minutes pour chiffrer le secteur</div><a class="dl-cta" href="https://survey.alchemer.com/s3/8764424/ConcertationPFNL" rel="noopener noreferrer" target="_blank">Répondre au sondage →</a></div>
+</div>
+<div class="side-box">
+<div class="side-k">Le chiffre du mois</div>
+<div class="chiffre">
+<div class="big">?</div>
+<div class="txt">[EN ATTENTE — RÉDIGÉ PAR AGÉCO] Nouveau chiffre du mois à déterminer</div>
+<div class="relance">Le portrait économique du secteur, lui, reste à faire. Vous connaissez une entreprise du milieu ? <a href="https://survey.alchemer.com/s3/8764424/ConcertationPFNL" rel="noopener noreferrer" target="_blank">Partagez le sondage</a>, quinze minutes suffisent.</div>
+</div>
+</div>
+<div class="side-box">
+<div class="side-sub">
+<h3>Une nouvelle à partager ?</h3>
+<p>Une initiative, une formation, un appel à projets dans votre région : soumettez l'information, elle pourra paraître dans le prochain numéro.</p>
+<a class="cta" href="suggerer.html">Soumettre une information</a>
+</div>
+</div>
+</aside>
+<div class="main">
+<section class="sec">
+<div class="sec-head"><span class="b" style="background:var(--sec-fin)"></span><h2>Programmes et financement</h2><span class="cnt">7 programmes ouverts</span></div>
+<div class="fin-scroll">
+<table class="fin">
+<thead>
+<tr><th scope="col">Programme</th><th scope="col">Clientèle admissible</th><th scope="col">Échéance</th></tr>
+</thead>
+<tbody>
+<tr><td><a href="https://cribiq.qc.ca/" rel="noopener noreferrer" target="_blank">Quatre appels PSO du CRIBIQ</a><span class="tag-new">Nouveau</span><span class="sub">Recherche partenariale entre une entreprise et un centre de recherche, sur l'extraction, la purification et la valorisation de biomasse. Notre lecture : les extraits de champignons ou de petits fruits nordiques y entrent, le consortium ayant déjà financé des extractibles d'écorces forestières.</span></td><td>Projets collaboratifs entreprise-recherche, adhésion au consortium à valider</td><td class="ech soon detail">Lettre d'intention en continu, prochaine demande détaillée en octobre 2026 selon le volet, puis en février 2027</td></tr>
+<tr><td><a href="https://www.quebec.ca/entreprises-et-travailleurs-autonomes/industrie-bioalimentaire/aides-financieres/aide-financiere-transformation-distribution-alimentaires/programme-alimentation-sante" rel="noopener noreferrer" target="_blank">Programme Alimentation Santé, volet 3</a><span class="sub">MAPAQ, jusqu'à 900 000 $. Pour une filière ou une table de concertation qui structure une démarche collective. Volets 1 et 2 en continu jusqu'en 2029.</span></td><td>Associations sectorielles, établissements de recherche, OBNL, firmes-conseils, coopératives</td><td class="ech soon">23 oct. 2026</td></tr>
+<tr><td><a href="https://sshrc-crsh.canada.ca/fr/financement/occasions/subventions-connexion/2026/concours.aspx" rel="noopener noreferrer" target="_blank">Subventions Connexion</a><span class="sub">CRSH, 10 000 $ à 50 000 $. Un colloque ou une série d'ateliers de transfert vers les cueilleurs. Contrepartie de 50 % obligatoire.</span></td><td>Chercheurs, établissements postsecondaires et OBNL avec une université partenaire</td><td class="ech">2 nov. 2026</td></tr>
+<tr><td><a href="https://www.fbfq.ca/programme/hydro-quebec-pour-la-mise-en-valeur-des-milieux-naturels/" rel="noopener noreferrer" target="_blank">Hydro-Québec, mise en valeur des milieux naturels</a><span class="sub">Fondation pour la biodiversité et la faune du Québec.</span></td><td>Organismes de conservation et gestionnaires de territoires</td><td class="ech">1<sup>er</sup> déc. 2026</td></tr>
+<tr><td><a href="https://innoveici.quebec/programmes/papde-volet-2-projets-structurants-dorganismes-en-appui-au-developpement-des-secteurs-strategiques-et-des-regions/" rel="noopener noreferrer" target="_blank">PAPDE, volet 2, projets structurants</a><span class="sub">MEIE, jusqu'à 1 M$ par année. Le meilleur véhicule pour une étude de positionnement de filière ou un plan de développement sectoriel.</span></td><td>Entreprises, OBNL, cégeps, CCTT, universités, municipalités et MRC</td><td class="ech">En continu</td></tr>
+<tr><td><a href="https://www.quebec.ca/habitation-territoire/amenagement-developpement-territoires/developpement/fonds-programmes/fonds-regions-ruralite/volet-2-developpement-territorial" rel="noopener noreferrer" target="_blank">Fonds régions et ruralité, volet 2</a><span class="sub">Délégué aux MRC. Le fonds le plus souple pour démarrer un projet PFNL local. Il a financé la noiseraie de recherche de La Mitis.</span></td><td>Promoteurs déposant auprès de leur MRC</td><td class="ech">Selon la MRC</td></tr>
+<tr><td><a href="https://faqdd.qc.ca/programmes/fonds-ecoleader-biodiversite/" rel="noopener noreferrer" target="_blank">Fonds Écoleader, volet Biodiversité</a><span class="sub">FAQDD. Volet Entreprises individuelles : jusqu'à 75 000 $, ouvert jusqu'au 31 août 2027 ou jusqu'à épuisement de l'enveloppe globale de 5,7 M$ sur trois ans. Finance un diagnostic biodiversité des pratiques de récolte en milieu naturel.</span></td><td>Entreprises, OBNL et coopératives</td><td class="ech detail">Jusqu'à épuisement des fonds</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="sec">
+<div class="sec-head"><span class="b" style="background:var(--sec-actu)"></span><h2>En bref, d'une région à l'autre</h2><span class="cnt">à compléter</span></div>
+<div class="placeholder">[EN ATTENTE] Brèves régionales d'octobre à intégrer — voir BRIEF-RECHERCHE-EDITION-02.md</div></section>
+<section class="sec">
+<div class="sec-head"><span class="b" style="background:var(--sec-rech)"></span><h2>Recherche, savoir-faire et innovation</h2><span class="cnt">à compléter</span></div>
+<div class="placeholder">[EN ATTENTE] Nouvelles de recherche et d'innovation d'octobre à intégrer</div></section>
+<section class="sec">
+<div class="sec-head"><span class="b" style="background:var(--sec-portrait)"></span><h2>Portrait du mois</h2><span class="cnt">nouvelle chronique</span></div>
+<div class="placeholder">[EN ATTENTE — RÉDIGÉ PAR AGÉCO] Nouveau portrait ou réflexion du mois — ou retirer la section si aucun ce mois-ci</div></section>
+<section class="sec">
+<div class="sec-head"><span class="b" style="background:var(--sec-appel)"></span><h2>Le secteur cherche</h2><span class="cnt">4 appels ouverts</span></div>
+<ul class="appel-list">
+<li><strong>Répondants au sondage de concertation PFNL.</strong> Quinze minutes pour bâtir le portrait économique du secteur, qui n'existe pas encore. Quatre filières couvertes : petits fruits, champignons, plantes sauvages et noix. <a href="https://survey.alchemer.com/s3/8764424/ConcertationPFNL" rel="noopener noreferrer" target="_blank">Répondre</a></li>
+<li><strong>Membres de l'ACPFNL.</strong> Campagne d'adhésion ouverte jusqu'au 1<sup>er</sup> septembre 2027, pour les cueilleurs, producteurs, transformateurs, chercheurs et partenaires institutionnels. <a href="https://acpfnl-1.s1.yapla.com/fr/accueil" rel="noopener noreferrer" target="_blank">S'informer</a></li>
+<li><strong>Entreprises</strong> souhaitant former ou embaucher un cueilleur, via le programme de 720 heures de ForêtCompétences, rémunéré et en alternance. <a href="https://foretcompetences.ca/formations/programme-coud-valorisation-des-pfnl" rel="noopener noreferrer" target="_blank">S'informer</a></li>
+<li><strong>Propriétaires forestiers</strong> pour le premier sondage national du genre en plus de vingt ans, mené par l'Université McGill. L'occasion de faire compter la diversification non ligneuse. <a href="https://forestowners.ca/fr/a-propos/sondage" rel="noopener noreferrer" target="_blank">Répondre</a></li>
+</ul>
+</section>
+<section class="sec">
+<div class="sec-head"><span class="b" style="background:var(--sec-cal)"></span><h2>Calendrier des événements</h2><span class="cnt">12 rendez-vous</span></div>
+<div class="cal-list">
+<div class="cal-row"><span class="dt">1er sept. au 12 oct.</span><span class="ev"><a href="https://www.myco04.ca/" rel="noopener noreferrer" target="_blank">MYCO en pourvoirie et initiation à la cueillette (nouveauté)</a> <span class="w">· Mauricie</span></span></div>
+<div class="cal-row"><span class="dt">1er octobre</span><span class="ev"><a href="https://www.myco04.ca/" rel="noopener noreferrer" target="_blank">Grande tablée des veuves de chasse</a> <span class="w">· La Tuque</span></span></div>
+<div class="cal-row"><span class="dt">2 au 12 oct.</span><span class="ev"><a href="https://www.myco04.ca/" rel="noopener noreferrer" target="_blank">MYCO — Rendez-vous de la gastronomie forestière, 10e édition</a> <span class="w">· Restaurants de la Mauricie</span></span></div>
+<div class="cal-row"><span class="dt">9-12 octobre</span><span class="ev"><a href="https://delicesdautomne.com/" rel="noopener noreferrer" target="_blank">Délices d'Automne, passeport 15 $</a> <span class="w">· Amphithéâtre Cogeco, Trois-Rivières</span></span></div>
+<div class="cal-row"><span class="dt">11 octobre</span><span class="ev"><a href="https://www.myco04.ca/" rel="noopener noreferrer" target="_blank">Les Duos MYCO, dans le cadre de Délices d'Automne</a> <span class="w">· Trois-Rivières</span></span></div>
+<div class="cal-row"><span class="dt">11 octobre</span><span class="ev"><a href="https://www.myco04.ca/" rel="noopener noreferrer" target="_blank">Marché public forestier</a> <span class="w">· Mauricie</span></span></div>
+<div class="cal-row"><span class="dt">13-15 octobre</span><span class="ev"><a href="https://lesforestibles.ca/evenements/" rel="noopener noreferrer" target="_blank">Kiosque Les Forestibles au SIIViM</a> <span class="w">· Mont-Tremblant</span></span></div>
+<div class="cal-row"><span class="dt">22 octobre</span><span class="ev"><a href="https://www.afsq.org/fr/evenements-a-venir/detail/colloque-2026-de-lassociation-forestiere-du-sud-du-quebec/86459" rel="noopener noreferrer" target="_blank">Colloque « Penser biodiversité, agir en aménagement »</a> <span class="w">· Val-des-Sources, Estrie</span></span></div>
+<div class="cal-row"><span class="dt">24 octobre</span><span class="ev"><a href="https://www.agrireseau.net/calendrier/119978/hygiene-et-salubrite-alimentaires-pour-les-manipulateurs-en-presence-ou-en-ligne" rel="noopener noreferrer" target="_blank">Hygiène et salubrité alimentaires, formation obligatoire pour qui transforme et vend</a> <span class="w">· en présence ou en ligne</span></span></div><div class="cal-row"><span class="dt">1er novembre</span><span class="ev"><a href="https://wiseoakwilderness.com/forestfeast/" rel="noopener noreferrer" target="_blank">Food from the trees — glands, noix noires et caryers, atelier Wise Oak Wilderness</a> <span class="w">· Kahnawake</span></span></div>
+<div class="cal-row"><span class="dt">12-13 novembre</span><span class="ev"><a href="https://foretcompetences.ca/colloque-annuel" rel="noopener noreferrer" target="_blank">Colloque annuel de ForêtCompétences</a> <span class="w">· Lac-Delage</span></span></div>
+<div class="cal-row"><span class="dt">25-26 novembre</span><span class="ev"><a href="https://www.mrcal.ca/evenements/participation-citoyenne/sommetmyco2026" rel="noopener noreferrer" target="_blank">3<sup>e</sup> Sommet du mycotourisme</a> <span class="w">· Mont-Laurier, Laurentides</span></span></div>
+</div>
+</section>
+</div>
+</div>
+<div class="abo-band">
+<div>
+<h3>Participer à la concertation du secteur</h3>
+<p>Recevez et partagez La Vigie : les nouvelles des régions, les programmes ouverts et les rendez-vous à l'agenda.</p>
+</div>
+<a class="cta" href="mailto:infolettre_pfnl@groupeageco.ca?subject=Abonnement%20%C3%A0%20La%20Vigie%20PFNL&amp;body=Bonjour%2C%0A%0AJe%20souhaite%20m%27abonner%20%C3%A0%20l%27infolettre%20La%20Vigie%20PFNL.%0A%0ANom%20%3A%0AOrganisation%20%3A%0AR%C3%A9gion%20%3A%0A">S'inscrire à l'infolettre</a>
+</div>
+<div class="foot">
+<div>
+<div><strong>La Vigie PFNL</strong> est l'infolettre de la concertation du secteur des PFNL au Québec.</div>
+<div class="foot-legal"><em>Veille assistée par intelligence artificielle, vérifiée et validée par l'équipe de concertation. Chaque information renvoie à sa source d'origine.</em><br/>© 2026 Groupe AGÉCO · Toute reproduction interdite sans accord préalable.</div>
+</div>
+<div class="links">
+<button class="btn-pdf" onclick="window.print()">Version PDF</button>
+</div>
+</div>
+</div>
+</html>
