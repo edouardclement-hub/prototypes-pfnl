@@ -152,6 +152,7 @@
   .res-ed { font-size: 11.5px; color: var(--ink-3); margin-left: auto; font-variant-numeric: tabular-nums; }
   .res-card h3 { font-size: 15.5px; font-weight: 700; line-height: 1.35; }
   .res-card p { font-size: 13px; color: var(--ink-2); margin-top: 3px; }
+  .res-card .src { font-size: 12px; margin-top: 6px; display: inline-block; }
   .res-card .reg { font-size: 10.5px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--green-deep); }
   .exp-empty { text-align: center; color: var(--ink-3); font-size: 14px; padding: 40px 0; }
 
@@ -466,7 +467,8 @@
     var box = document.getElementById('results');
     if (!out.length) { box.innerHTML = '<div class="exp-empty">Aucun résultat — essayez un autre mot ou retirez un filtre.</div>'; return; }
     box.innerHTML = out.map(function(it){
-      return '<div class="res-card"><div class="res-meta"><span class="res-pill ' + THEME_CLS[it.t] + '">' + THEME_LABEL[it.t] + '</span><span class="reg">' + it.reg + '</span><span class="res-ed">' + it.ed + '</span></div><h3>' + it.ti + '</h3><p>' + it.tx + '</p></div>';
+      var lien = it.url ? '<a class="src" href="' + it.url + '" target="_blank" rel="noopener noreferrer">Voir la source →</a>' : '';
+      return '<div class="res-card"><div class="res-meta"><span class="res-pill ' + THEME_CLS[it.t] + '">' + THEME_LABEL[it.t] + '</span><span class="reg">' + it.reg + '</span><span class="res-ed">' + it.ed + '</span></div><h3>' + it.ti + '</h3><p>' + it.tx + '</p>' + lien + '</div>';
     }).join('');
   }
   (function(){
