@@ -482,8 +482,11 @@
   function aboDemo(){
     var email = document.getElementById('abo-email').value.trim();
     var corps = "Je souhaite m'abonner à l'infolettre La Vigie PFNL.\n\nCourriel : " + email;
-    document.getElementById('abo-ok').style.display = 'block';
-    window.location.href = 'mailto:infolettre_pfnl@groupeageco.ca?subject=' + encodeURIComponent("Abonnement à La Vigie PFNL") + '&body=' + encodeURIComponent(corps);
+    var lien = 'mailto:infolettre_pfnl@groupeageco.ca?subject=' + encodeURIComponent("Abonnement à La Vigie PFNL") + '&body=' + encodeURIComponent(corps);
+    var ok = document.getElementById('abo-ok');
+    ok.innerHTML = 'Votre client courriel devrait s\'ouvrir. Si rien ne se passe, <a href="' + lien + '">cliquez ici</a>, ou écrivez directement à <strong>infolettre_pfnl@groupeageco.ca</strong>.';
+    ok.style.display = 'block';
+    window.location.href = lien;
   }
   function subDemo(){
     var url = document.getElementById('s-url').value.trim();
@@ -494,8 +497,11 @@
     if (note) corps += note + '\n\n';
     if (nom) corps += '— ' + nom + '\n';
     corps += '\n(Envoyé depuis le portail de La Vigie PFNL)';
-    document.getElementById('sub-ok').style.display = 'block';
-    window.location.href = 'mailto:infolettre_pfnl@groupeageco.ca?subject=' + encodeURIComponent('Information pour La Vigie PFNL') + '&body=' + encodeURIComponent(corps);
+    var lien = 'mailto:infolettre_pfnl@groupeageco.ca?subject=' + encodeURIComponent('Information pour La Vigie PFNL') + '&body=' + encodeURIComponent(corps);
+    var ok = document.getElementById('sub-ok');
+    ok.innerHTML = 'Votre client courriel devrait s\'ouvrir. Si rien ne se passe, <a href="' + lien + '">cliquez ici</a>, ou écrivez directement à <strong>infolettre_pfnl@groupeageco.ca</strong>.';
+    ok.style.display = 'block';
+    window.location.href = lien;
   }
 </script>
 </html>
