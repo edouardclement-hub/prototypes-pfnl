@@ -53,10 +53,20 @@
   .head .meta { margin-left: auto; text-align: right; }
   .head .meta .n { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-2); }
   .head .meta .t { font-size: 12px; color: var(--ink-3); }
-  .ouverture { border-left: 4px solid var(--green); background: var(--panel); border-radius: 0 10px 10px 0; padding: 16px 22px; margin: 26px 0 6px; max-width: 76ch; }
-  .ouverture p { font-size: 15.5px; }
+  .ouverture { display: grid; grid-template-columns: 1fr; gap: 18px; border: 1px solid var(--line); border-left: 4px solid var(--green); background: var(--panel); border-radius: 0 10px 10px 0; padding: 20px 24px; margin: 26px 0 6px; }
+  .ouverture p { font-size: 15.5px; max-width: 66ch; }
   .ouverture p + p { margin-top: 12px; }
   .ouverture .sig { font-size: 13px; color: var(--ink-3); margin-top: 8px; }
+  .ouv-resume { border-top: 1px solid var(--line); padding-top: 16px; }
+  .ouv-k { font-size: 11px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 10px; }
+  .ouv-l { display: flex; align-items: baseline; gap: 12px; padding: 7px 0; border-bottom: 1px solid var(--line); }
+  .ouv-l:last-child { border-bottom: none; padding-bottom: 0; }
+  .ouv-l .n { font-size: 21px; font-weight: 800; color: var(--green); min-width: 30px; font-variant-numeric: tabular-nums; line-height: 1; }
+  .ouv-l .t { font-size: 12.5px; color: var(--ink-2); line-height: 1.35; }
+  @media (min-width: 920px) {
+    .ouverture { grid-template-columns: minmax(0, 1fr) 260px; gap: 36px; padding: 24px 30px; }
+    .ouv-resume { border-top: none; border-left: 1px solid var(--line); padding-top: 0; padding-left: 26px; }
+  }
   .layout { display: grid; grid-template-columns: 1fr; gap: 0 44px; margin-top: 26px; }
   @media (min-width: 920px) {
     .layout { grid-template-columns: minmax(0, 1fr) 350px; }
@@ -197,10 +207,17 @@
 
     <div id="ed02">
 <header class="head"><div class="beacon-lg" aria-hidden="true"></div><h1>La Vigie PFNL</h1><div class="meta"><div class="n">Octobre 2026 · Nº 02</div><div class="t">L'infolettre mensuelle du secteur des PFNL</div></div></header>
-<div class="ouverture">
+<div class="ouverture"><div class="ouv-mot">
 <p><strong>Ce mois-ci, la nouvelle qui nous a le plus frappés n'est pas un chiffre : c'est une région.</strong> Après vingt-cinq ans d'existence, la Fédération québécoise des groupes de mycologues a tenu sa rencontre annuelle en Gaspésie pour la toute première fois — une centaine de passionnés venus de quatorze régions, réunis là où la mycologie organisée n'avait encore jamais mis les pieds. C'est exactement le genre de signal que cette infolettre existe pour repérer : le secteur des PFNL ne cesse de s'étendre, région après région, souvent avant que les statistiques ne le confirment.</p>
 <p>On retrouve cette dynamique un peu partout ce mois-ci : une forêt nourricière plantée collectivement à Lac-Saint-Charles, une première formation collégiale en mycotechnologie annoncée à La Pocatière au Bas-Saint-Laurent. Et du côté du financement, plusieurs échéances approchent vite — notamment le nouveau programme PDTS du MAPAQ, qui finance aussi bien un plan de développement de filière que la coordination d'une concertation sectorielle : c'est ce type de programme qui a financé le plan stratégique du secteur des PFNL l'an dernier, et l'ACPFNL prévoit y déposer une demande pour assurer le développement et la concertation du secteur en 2027.</p>
 <div class="sig">L'équipe de la concertation du secteur des PFNL au Québec</div>
+</div>
+<div class="ouv-resume"><div class="ouv-k">Dans ce numéro</div>
+<div class="ouv-l"><span class="n">13</span><span class="t">programmes de financement ouverts</span></div>
+<div class="ouv-l"><span class="n">13</span><span class="t">nouvelles des régions et de la recherche</span></div>
+<div class="ouv-l"><span class="n">5</span><span class="t">appels à participation</span></div>
+<div class="ouv-l"><span class="n">16</span><span class="t">rendez-vous à l'agenda</span></div>
+</div>
 </div>
 <div class="layout"><aside class="side">
 <div class="side-box"><div class="side-k hot">⚠ À ne pas manquer</div>
@@ -273,10 +290,18 @@
 </div></div></div>
 <div id="ed01" hidden>
 <header class="head"><div class="beacon-lg" aria-hidden="true"></div><h1>La Vigie PFNL</h1><div class="meta"><div class="n">Septembre 2026 · Nº 01</div><div class="t">L'infolettre mensuelle du secteur des PFNL</div></div></header>
-<div class="ouverture">
+<div class="ouverture"><div class="ouv-mot">
 <p><strong>Bienvenue dans ce premier numéro.</strong> Le secteur des produits forestiers non ligneux avance vite et se déploie dans plusieurs régions du Québec, souvent sans que l'information franchisse les frontières administratives. La Vigie existe pour ça : rassembler ce qui se passe ailleurs qu'à côté de chez vous, avec les échéances de financement et les rendez-vous à mettre à l'agenda.</p>
 <p>Septembre est un mois chargé. Trois programmes se ferment avant la fin du mois, la saison de cueillette bat son plein, et les festivités gastronomiques s'amorcent. Bonne lecture, et écrivez-nous sur ce qui se prépare chez vous.</p>
 <div class="sig">L'équipe de la concertation du secteur des PFNL au Québec</div>
+</div>
+<div class="ouv-resume"><div class="ouv-k">Dans ce numéro</div>
+<div class="ouv-l"><span class="n">12</span><span class="t">programmes de financement ouverts</span></div>
+<div class="ouv-l"><span class="n">11</span><span class="t">nouvelles des régions et de la recherche</span></div>
+<div class="ouv-l"><span class="n">4</span><span class="t">appels à participation</span></div>
+<div class="ouv-l"><span class="n">1</span><span class="t">portrait — hommage à Gérald Le Gal</span></div>
+<div class="ouv-l"><span class="n">21</span><span class="t">rendez-vous à l'agenda</span></div>
+</div>
 </div>
 <div class="layout"><aside class="side">
 <div class="side-box"><div class="side-k hot">⚠ À ne pas manquer</div>
