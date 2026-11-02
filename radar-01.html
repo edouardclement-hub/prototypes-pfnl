@@ -167,6 +167,12 @@
     padding: 13px 26px; border-radius: 8px; white-space: nowrap; text-decoration: none;
   }
   .abo-band .cta:hover { text-decoration: none; background: #EAF3ED; }
+  .abo-band p a { color: #fff; font-weight: 700; border-bottom: 1px solid rgba(255,255,255,.45); text-decoration: none; }
+  .abo-band p a:hover { border-bottom-color: #fff; }
+  .abo-fb { margin-top: 14px; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; font-size: 13px; color: var(--ink-2); }
+  .abo-fb strong { color: var(--ink); }
+  .fallback-texte { display: block; width: 100%; margin-top: 8px; font-family: monospace; font-size: 12px; padding: 8px 10px; border-radius: 6px; border: none; resize: vertical; min-height: 90px; color: var(--ink); background: #fff; }
+  .fallback-copier { display: inline-block; margin-top: 6px; font-family: var(--sans); font-size: 12.5px; font-weight: 700; padding: 6px 12px; border-radius: 6px; border: 1px solid rgba(0,0,0,0.15); background: rgba(255,255,255,0.6); color: var(--ink); cursor: pointer; }
   .foot { margin-top: 26px; padding-top: 14px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 12.5px; color: var(--ink-3); align-items: flex-start; }
   .foot-legal { margin-top: 5px; }
   .foot-legal a { color: var(--ink-2); font-weight: 700; border-bottom: 1px solid rgba(31,122,77,.4); }
@@ -175,7 +181,7 @@
   .btn-pdf { font-family: var(--sans); font-size: 12.5px; font-weight: 700; color: var(--ink-2); background: none; border: 1px solid var(--line); border-radius: 6px; padding: 6px 13px; cursor: pointer; }
 
   @media print {
-    .side-sub, .btn-pdf, .abo-band, .foot .links { display: none; }
+    .side-sub, .btn-pdf, .abo-band, .abo-fb, .foot .links { display: none; }
     /* Une épreuve imprimée doit rester identifiable comme telle */
     .proto-bar { background: #fff; color: var(--urgent); border: 2px solid var(--urgent); border-radius: 6px; margin-bottom: 14px; padding: 8px 12px; }
     .proto-bar strong { background: none; color: var(--urgent); border: 1px solid var(--urgent); }
@@ -351,9 +357,24 @@
 <div class="abo-band">
 <div>
 <h3>Participer à la concertation du secteur</h3>
-<p>Recevez et partagez La Vigie : les nouvelles des régions, les programmes ouverts et les rendez-vous à l'agenda.</p>
+<p>Recevez et partagez La Vigie : les nouvelles des régions, les programmes ouverts et les rendez-vous à l'agenda. Vous pouvez aussi écrire directement à <a href="mailto:infolettre_pfnl@groupeageco.ca">infolettre_pfnl@groupeageco.ca</a>.</p>
 </div>
-<a class="cta" href="mailto:infolettre_pfnl@groupeageco.ca?subject=Abonnement%20%C3%A0%20La%20Vigie%20PFNL&amp;body=Bonjour%2C%0A%0AJe%20souhaite%20m%27abonner%20%C3%A0%20l%27infolettre%20La%20Vigie%20PFNL.%0A%0ANom%20%3A%0AOrganisation%20%3A%0AR%C3%A9gion%20%3A%0A">S'inscrire à l'infolettre</a>
+<a class="cta" href="mailto:infolettre_pfnl@groupeageco.ca?subject=Abonnement%20%C3%A0%20La%20Vigie%20PFNL&amp;body=Bonjour%2C%0A%0AJe%20souhaite%20m%27abonner%20%C3%A0%20l%27infolettre%20La%20Vigie%20PFNL.%0A%0ANom%20%3A%0AOrganisation%20%3A%0AR%C3%A9gion%20%3A%0A" onclick="document.getElementById('abo-fb').hidden=false">S'inscrire à l'infolettre</a>
+</div>
+<div class="abo-fb" id="abo-fb" hidden>
+<p>Si votre client courriel ne s'est pas ouvert, copiez ce message et envoyez-le à <strong>infolettre_pfnl@groupeageco.ca</strong> :</p>
+<textarea class="fallback-texte" id="abo-texte" readonly onclick="this.select()">À : infolettre_pfnl@groupeageco.ca
+Objet : Abonnement à La Vigie PFNL
+
+Bonjour,
+
+Je souhaite m'abonner à l'infolettre La Vigie PFNL.
+
+Nom :
+Organisation :
+Région :
+</textarea>
+<button type="button" class="fallback-copier" onclick="copierTexte('abo-texte', this)">Copier le message</button>
 </div>
 <div class="foot">
 <div>
@@ -365,4 +386,16 @@
 </div>
 </div>
 </div>
+<script>
+function copierTexte(id, btn) {
+  var champ = document.getElementById(id);
+  champ.focus(); champ.select();
+  var fait = function(){ var t = btn.textContent; btn.textContent = 'Copié !'; setTimeout(function(){ btn.textContent = t; }, 2000); };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(champ.value).then(fait, function(){ try { document.execCommand('copy'); fait(); } catch(e){} });
+  } else {
+    try { document.execCommand('copy'); fait(); } catch(e){}
+  }
+}
+</script>
 </html>

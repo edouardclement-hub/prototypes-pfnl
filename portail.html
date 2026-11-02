@@ -126,6 +126,12 @@
   .abo-band p { font-size: 13.5px; color: #B9D4C3; margin-top: 5px; max-width: 54ch; }
   .abo-band .cta { background: #fff; color: var(--green-deep); font-weight: 800; font-size: 14.5px; padding: 13px 26px; border-radius: 8px; white-space: nowrap; text-decoration: none; }
   .abo-band .cta:hover { text-decoration: none; background: #EAF3ED; }
+  .abo-band p a { color: #fff; font-weight: 700; border-bottom: 1px solid rgba(255,255,255,.45); text-decoration: none; }
+  .abo-band p a:hover { border-bottom-color: #fff; }
+  .abo-fb { margin-top: 14px; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; font-size: 13px; color: var(--ink-2); }
+  .abo-fb strong { color: var(--ink); }
+  .fallback-texte { display: block; width: 100%; margin-top: 8px; font-family: monospace; font-size: 12px; padding: 8px 10px; border-radius: 6px; border: none; resize: vertical; min-height: 90px; color: var(--ink); background: #fff; }
+  .fallback-copier { display: inline-block; margin-top: 6px; font-family: var(--sans); font-size: 12.5px; font-weight: 700; padding: 6px 12px; border-radius: 6px; border: 1px solid rgba(0,0,0,0.15); background: rgba(255,255,255,0.6); color: var(--ink); cursor: pointer; }
   .foot { margin-top: 24px; text-align: center; font-size: 12.5px; color: var(--ink-3); }
   .foot-legal { margin-top: 6px; }
 
@@ -171,7 +177,7 @@
   .sub-steps li { margin: 0 0 8px 18px; }
 
   @media print {
-    .proto-bar, .nav, .ed-bar, .abo-band, .foot, .side-sub { display: none; }
+    .proto-bar, .nav, .ed-bar, .abo-band, .abo-fb, .foot, .side-sub { display: none; }
     body { background: #fff; font-size: 12px; }
     .view { display: none !important; } #view-numero { display: block !important; }
     .wrap { padding: 0; max-width: none; }
@@ -458,9 +464,24 @@
     <div class="abo-band">
 <div>
 <h3>Participer à la concertation du secteur</h3>
-<p>Recevez et partagez La Vigie : les nouvelles des régions, les programmes ouverts et les rendez-vous à l'agenda.</p>
+<p>Recevez et partagez La Vigie : les nouvelles des régions, les programmes ouverts et les rendez-vous à l'agenda. Vous pouvez aussi écrire directement à <a href="mailto:infolettre_pfnl@groupeageco.ca">infolettre_pfnl@groupeageco.ca</a>.</p>
 </div>
-<a class="cta" href="mailto:infolettre_pfnl@groupeageco.ca?subject=Abonnement%20%C3%A0%20La%20Vigie%20PFNL&amp;body=Bonjour%2C%0A%0AJe%20souhaite%20m%27abonner%20%C3%A0%20l%27infolettre%20La%20Vigie%20PFNL.%0A%0ANom%20%3A%0AOrganisation%20%3A%0AR%C3%A9gion%20%3A%0A">S'inscrire à l'infolettre</a>
+<a class="cta" href="mailto:infolettre_pfnl@groupeageco.ca?subject=Abonnement%20%C3%A0%20La%20Vigie%20PFNL&amp;body=Bonjour%2C%0A%0AJe%20souhaite%20m%27abonner%20%C3%A0%20l%27infolettre%20La%20Vigie%20PFNL.%0A%0ANom%20%3A%0AOrganisation%20%3A%0AR%C3%A9gion%20%3A%0A" onclick="document.getElementById('abo-fb').hidden=false">S'inscrire à l'infolettre</a>
+</div>
+<div class="abo-fb" id="abo-fb" hidden>
+<p>Si votre client courriel ne s'est pas ouvert, copiez ce message et envoyez-le à <strong>infolettre_pfnl@groupeageco.ca</strong> :</p>
+<textarea class="fallback-texte" id="abo-texte" readonly onclick="this.select()">À : infolettre_pfnl@groupeageco.ca
+Objet : Abonnement à La Vigie PFNL
+
+Bonjour,
+
+Je souhaite m'abonner à l'infolettre La Vigie PFNL.
+
+Nom :
+Organisation :
+Région :
+</textarea>
+<button type="button" class="fallback-copier" onclick="copierTexte('abo-texte', this)">Copier le message</button>
 </div>
     <div class="foot"><strong>La Vigie PFNL</strong> est l'infolettre de la concertation du secteur des PFNL au Québec.<div class="foot-legal"><em>Veille assistée par intelligence artificielle, vérifiée et validée par l'équipe de concertation. Chaque information renvoie à sa source d'origine.</em><br/>© 2026 Agéco · Toute reproduction interdite sans accord préalable.</div></div>
   </section>
