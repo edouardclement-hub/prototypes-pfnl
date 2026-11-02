@@ -121,16 +121,13 @@
   .side-sub .cta:hover { text-decoration: none; filter: brightness(1.1); }
 
   /* ===== Abonnement + footer ===== */
-  .abo { background: var(--green-deep); border-radius: 12px; color: #EFF6F1; padding: 26px 28px; margin-top: 12px; text-align: center; }
-  .abo h2 { font-size: 21px; font-weight: 800; text-wrap: balance; }
-  .abo p { font-size: 13px; color: #B9D4C3; margin: 6px auto 14px; max-width: 46ch; }
-  .abo-row { display: flex; gap: 8px; max-width: 380px; margin: 0 auto; }
-  .abo-row input { flex: 1; font-family: var(--sans); font-size: 13.5px; padding: 10px 13px; border: none; border-radius: 7px; }
-  .abo-row button { background: var(--urgent); color: #fff; font-family: var(--sans); font-weight: 700; font-size: 13.5px; padding: 10px 16px; border: none; border-radius: 7px; cursor: pointer; }
-  .abo .ok { display: none; font-size: 13px; font-weight: 700; color: #F5C89A; margin-top: 10px; }
-  .fallback-texte { display: block; width: 100%; margin-top: 8px; font-family: monospace; font-size: 12px; padding: 8px 10px; border-radius: 6px; border: none; resize: vertical; min-height: 90px; color: var(--ink); background: #fff; }
-  .fallback-copier { display: inline-block; margin-top: 6px; font-family: var(--sans); font-size: 12.5px; font-weight: 700; padding: 6px 12px; border-radius: 6px; border: 1px solid rgba(0,0,0,0.15); background: rgba(255,255,255,0.6); color: var(--ink); cursor: pointer; }
+  .abo-band { background: var(--green-deep); color: #fff; border-radius: 12px; padding: 26px 32px; margin-top: 12px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .abo-band h3 { font-size: 20px; font-weight: 800; letter-spacing: -0.01em; }
+  .abo-band p { font-size: 13.5px; color: #B9D4C3; margin-top: 5px; max-width: 54ch; }
+  .abo-band .cta { background: #fff; color: var(--green-deep); font-weight: 800; font-size: 14.5px; padding: 13px 26px; border-radius: 8px; white-space: nowrap; text-decoration: none; }
+  .abo-band .cta:hover { text-decoration: none; background: #EAF3ED; }
   .foot { margin-top: 24px; text-align: center; font-size: 12.5px; color: var(--ink-3); }
+  .foot-legal { margin-top: 6px; }
 
   /* ===== Explorer ===== */
   .exp-head h1 { font-size: 28px; font-weight: 800; letter-spacing: -0.01em; }
@@ -174,7 +171,7 @@
   .sub-steps li { margin: 0 0 8px 18px; }
 
   @media print {
-    .proto-bar, .nav, .ed-bar, .abo, .foot, .side-sub { display: none; }
+    .proto-bar, .nav, .ed-bar, .abo-band, .foot, .side-sub { display: none; }
     body { background: #fff; font-size: 12px; }
     .view { display: none !important; } #view-numero { display: block !important; }
     .wrap { padding: 0; max-width: none; }
@@ -458,13 +455,14 @@
 </table></div></section>
 </div></div></div>
 
-    <div class="abo">
-      <h2>Recevez La Vigie PFNL chaque mois.</h2>
-      <p>Un courriel par mois : le résumé du numéro et le lien pour le lire. Désabonnement en un clic.</p>
-      <div class="abo-row"><input type="email" id="abo-email" placeholder="votre@courriel.ca" aria-label="Courriel"><button onclick="aboDemo()">S'abonner</button></div>
-      <div class="ok" id="abo-ok">Votre client courriel va s'ouvrir avec le message prêt à envoyer.</div>
-    </div>
-    <div class="foot">Concertation PFNL est animé par Agéco, agent de concertation du secteur. <strong>La Vigie PFNL</strong> est son infolettre mensuelle.</div>
+    <div class="abo-band">
+<div>
+<h3>Participer à la concertation du secteur</h3>
+<p>Recevez et partagez La Vigie : les nouvelles des régions, les programmes ouverts et les rendez-vous à l'agenda.</p>
+</div>
+<a class="cta" href="mailto:infolettre_pfnl@groupeageco.ca?subject=Abonnement%20%C3%A0%20La%20Vigie%20PFNL&amp;body=Bonjour%2C%0A%0AJe%20souhaite%20m%27abonner%20%C3%A0%20l%27infolettre%20La%20Vigie%20PFNL.%0A%0ANom%20%3A%0AOrganisation%20%3A%0AR%C3%A9gion%20%3A%0A">S'inscrire à l'infolettre</a>
+</div>
+    <div class="foot"><strong>La Vigie PFNL</strong> est l'infolettre de la concertation du secteur des PFNL au Québec.<div class="foot-legal"><em>Veille assistée par intelligence artificielle, vérifiée et validée par l'équipe de concertation. Chaque information renvoie à sa source d'origine.</em><br/>© 2026 Agéco · Toute reproduction interdite sans accord préalable.</div></div>
   </section>
 
   <!-- ================= VUE EXPLORER ================= -->
@@ -577,19 +575,6 @@
     } else {
       try { document.execCommand('copy'); fait(); } catch(e){}
     }
-  }
-  function aboDemo(){
-    var email = document.getElementById('abo-email').value.trim();
-    var sujet = "Abonnement à La Vigie PFNL";
-    var corps = "Je souhaite m'abonner à l'infolettre La Vigie PFNL.\n\nCourriel : " + email;
-    var lien = 'mailto:infolettre_pfnl@groupeageco.ca?subject=' + encodeURIComponent(sujet) + '&body=' + encodeURIComponent(corps);
-    var texte = 'À : infolettre_pfnl@groupeageco.ca\nObjet : ' + sujet + '\n\n' + corps;
-    var ok = document.getElementById('abo-ok');
-    ok.innerHTML = 'Votre client courriel devrait s\'ouvrir. Si les champs ne se sont pas remplis, copiez ce message et envoyez-le à <strong>infolettre_pfnl@groupeageco.ca</strong> :'
-      + '<textarea class="fallback-texte" id="abo-texte" readonly onclick="this.select()">' + texte + '</textarea>'
-      + '<button type="button" class="fallback-copier" onclick="copierTexte(\'abo-texte\', this)">Copier le message</button>';
-    ok.style.display = 'block';
-    window.location.href = lien;
   }
   function subDemo(){
     var url = document.getElementById('s-url').value.trim();
